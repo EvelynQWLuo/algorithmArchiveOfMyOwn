@@ -1,5 +1,13 @@
 package Sort;
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 
+/**
+ * 只有insert sort还有一些学习的意义，
+ * 三傻排序
+ */
 public class SelectBubbleInsert {
 
 	// 数组中交换i和j位置的数

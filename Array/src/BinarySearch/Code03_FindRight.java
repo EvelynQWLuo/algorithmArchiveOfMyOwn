@@ -1,7 +1,10 @@
 package BinarySearch;
 
 import java.util.Arrays;
-
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 // 有序数组中找<=num的最右位置
 public class Code03_FindRight {
 

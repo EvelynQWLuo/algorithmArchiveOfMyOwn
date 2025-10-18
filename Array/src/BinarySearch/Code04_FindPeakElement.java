@@ -1,5 +1,8 @@
 package BinarySearch;
-
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 // 峰值元素是指其值严格大于左右相邻值的元素
 // 给你一个整数数组 nums，已知任何两个相邻的值都不相等
 // 找到峰值元素并返回其索引
