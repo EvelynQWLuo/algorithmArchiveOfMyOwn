@@ -1,13 +1,5 @@
 .DS_Store
-algorithmArchiveOfMyOwn.iml
+
 .idea/
 
-Array.iml
-Backtracking.iml
-BinaryTree.iml
-DynamicProgramming.iml
-Graph.iml
-Greedy.iml
-HashTable.iml
-LinkedList.iml
-StackandQueue.iml
+*.iml
