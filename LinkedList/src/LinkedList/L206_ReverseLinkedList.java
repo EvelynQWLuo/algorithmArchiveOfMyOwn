@@ -6,7 +6,7 @@ package LinkedList;
 // 按值传递、按引用传递
 // 从堆栈角度解释链表节点
 // 以堆栈视角来看链表反转
-public class ReverseLinkedList206 {
+public class L206_ReverseLinkedList {
 
 	public static void main(String[] args) {
 		// int、long、byte、short

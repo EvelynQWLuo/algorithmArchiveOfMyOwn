@@ -1,9 +1,13 @@
-package class026;
+package HashTable;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.TreeSet;
 
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 public class Code03_Comparator {
 
 	public static class Employee {

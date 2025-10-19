@@ -4,7 +4,7 @@ package StackandQueue;
  * @author Evelyn
  * @version 1.0
  */
-public class DesignCircularQueue622 {
+public class L622_DesignCircularQueue {
     public int[] queue;
 
     public int l, r, size, limit;
@@ -16,7 +16,7 @@ public class DesignCircularQueue622 {
      */
 
     // 同时在队列里的数字个数，不要超过k
-    public DesignCircularQueue622(int k) {
+    public L622_DesignCircularQueue(int k) {
         queue = new int[k];
         l = r = size = 0;
         limit = k;

@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 // 设计循环双端队列
 
-public class CircularDeque {
+public class L641_DesignCircularDeque {
 
 	// 提交时把类名、构造方法改成 : MyCircularDeque
 	// 其实内部就是双向链表

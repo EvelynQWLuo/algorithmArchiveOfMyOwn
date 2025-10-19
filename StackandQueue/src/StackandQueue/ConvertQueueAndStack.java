@@ -1,14 +1,19 @@
-package class014;
+package StackandQueue;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 // 用栈实现队列
 // 用队列实现栈
 public class ConvertQueueAndStack {
 
-	// 测试链接 : https://leetcode.cn/problems/implement-queue-using-stacks/
+	//232
 	class MyQueue {
 
 		public Stack<Integer> in;
@@ -53,7 +58,7 @@ public class ConvertQueueAndStack {
 
 	}
 
-	// 测试链接 : https://leetcode.cn/problems/implement-stack-using-queues/
+	//225
 	class MyStack {
 
 		Queue<Integer> queue;

@@ -1,19 +1,33 @@
 package StackandQueue;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
+// 最小栈min stack 155
 
-// 最小栈
+	/*
+	准备两个stack，一个存所有需要入栈道元素，还有一个只存最小值
+	即依次压元素入栈，data是每一个都放，min只放比当前栈顶小的元素，如果是大的元素，就重复放一遍栈顶
+	如果栈空，就是最开始的时候，同步压入栈
+	 */
 
-public class GetMinStack {
+public class L155_MinStack {
 
 	// 提交时把类名、构造方法改成MinStack
 	class MinStack1 {
-		public Stack<Integer> data;
-		public Stack<Integer> min;
+		public Deque<Integer> data;
+		public Deque<Integer> min;
+
 
 		public MinStack1() {
-			data = new Stack<Integer>();
-			min = new Stack<Integer>();
+			//data = new Stack<Integer>();
+			//min = new Stack<Integer>();
+			data = new ArrayDeque<>();
+			min = new ArrayDeque<>();
 		}
 
 		public void push(int val) {

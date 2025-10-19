@@ -1,9 +1,13 @@
-package class026;
+package HashTable;
 
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 public class Code02_TreeSetAndTreeMap {
 
 	public static void main(String[] args) {
@@ -46,7 +50,7 @@ public class Code02_TreeSetAndTreeMap {
 			// System.out.println(set.pollLast());
 		}
 
-		// 堆，默认小根堆、如果要大根堆，定制比较器！
+		// 堆，默认小顶堆、如果要大顶堆，定制比较器！
 		PriorityQueue<Integer> heap1 = new PriorityQueue<>();
 		heap1.add(3);
 		heap1.add(3);
@@ -57,7 +61,7 @@ public class Code02_TreeSetAndTreeMap {
 			System.out.println(heap1.poll());
 		}
 
-		// 定制的大根堆，用比较器！
+		// 定制的大顶堆，用比较器！
 		PriorityQueue<Integer> heap2 = new PriorityQueue<>((a, b) -> b - a);
 		heap2.add(3);
 		heap2.add(3);

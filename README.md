@@ -26,6 +26,12 @@ A structured list of key algorithm categories and subtopics for quick reference 
 ## 📝 String
 
 ## 🧱 Stack & Queue
+- Implement Queue using Linked List and Array
+- Implement Stack using Array
+- Implement Circular Queue using Array
+- Min Stack
+- Monotonic Stack
+- MonotonicQueue
 
 ## 🌳 Binary Tree
 - Binary Tree

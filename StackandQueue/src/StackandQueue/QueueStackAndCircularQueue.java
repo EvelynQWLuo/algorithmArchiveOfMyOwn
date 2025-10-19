@@ -1,4 +1,4 @@
-package class013;
+package StackandQueue;
 
 import java.util.Queue;
 import java.util.LinkedList;
@@ -6,6 +6,9 @@ import java.util.Stack;
 
 public class QueueStackAndCircularQueue {
 
+	/*
+	链表实现
+	 */
 	// 直接用java内部的实现
 	// 其实内部就是双向链表，常数操作慢
 	public static class Queue1 {
@@ -41,9 +44,20 @@ public class QueueStackAndCircularQueue {
 
 	}
 
+	/*
+	 * Array实现
+	 */
 	// 实际刷题时更常见的写法，常数时间好
 	// 如果可以确定加入操作的总次数不超过n，那么可以用
 	// 一般笔试、面试都会有一个明确数据量，所以这是最常用的方式
+
+	// [ l, r)left-closed, right-open interval /half-open interval
+	//[l, r] closed interval
+	//(l, r) open interval
+	/*
+	l == r 空，l < r 不空
+	l，r都指向Array的0位置，放入的元素放在r位置，然后r++，弹出一个元素从l处弹，l++
+	 */
 	public static class Queue2 {
 
 		public int[] queue;
@@ -115,6 +129,9 @@ public class QueueStackAndCircularQueue {
 
 	}
 
+	/*
+	 Array 实现
+	 */
 	// 实际刷题时更常见的写法，常数时间好
 	// 如果可以保证同时在栈里的元素个数不会超过n，那么可以用
 	// 也就是发生弹出操作之后，空间可以复用
@@ -152,6 +169,8 @@ public class QueueStackAndCircularQueue {
 		}
 
 	}
+
+
 
 	// 设计循环队列
 	// 测试链接 : https://leetcode.cn/problems/design-circular-queue/
