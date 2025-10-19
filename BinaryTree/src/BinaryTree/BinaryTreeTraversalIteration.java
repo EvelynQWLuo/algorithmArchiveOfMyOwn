@@ -1,8 +1,6 @@
 package BinaryTree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 // 不用递归，用迭代的方式实现二叉树的三序遍历
 public class BinaryTreeTraversalIteration {
@@ -20,7 +18,7 @@ public class BinaryTreeTraversalIteration {
 	// 前序打印所有节点，非递归版
 	public static void preOrder(TreeNode head) {
 		if (head != null) {
-			Stack<TreeNode> stack = new Stack<>();
+			Deque<TreeNode> stack = new ArrayDeque<>();
 			stack.push(head);
 			while (!stack.isEmpty()) {
 				head = stack.pop();
@@ -39,7 +37,7 @@ public class BinaryTreeTraversalIteration {
 	// 中序打印所有节点，非递归版
 	public static void inOrder(TreeNode head) {
 		if (head != null) {
-			Stack<TreeNode> stack = new Stack<>();
+			Deque<TreeNode> stack = new ArrayDeque<>();
 			while (!stack.isEmpty() || head != null) {
 				if (head != null) {
 					stack.push(head);
@@ -60,8 +58,9 @@ public class BinaryTreeTraversalIteration {
 	// 这是用两个栈的方法
 	public static void posOrderTwoStacks(TreeNode head) {
 		if (head != null) {
-			Stack<TreeNode> stack = new Stack<>();
-			Stack<TreeNode> collect = new Stack<>();
+			Deque<TreeNode> stack = new ArrayDeque<>();
+			Deque<TreeNode> collect = new ArrayDeque<>();
+
 			stack.push(head);
 			while (!stack.isEmpty()) {
 				head = stack.pop();
@@ -84,7 +83,7 @@ public class BinaryTreeTraversalIteration {
 	// 这是用一个栈的方法
 	public static void posOrderOneStack(TreeNode h) {
 		if (h != null) {
-			Stack<TreeNode> stack = new Stack<>();
+			Deque<TreeNode> stack = new ArrayDeque<>();
 			stack.push(h);
 			// 如果始终没有打印过节点，h就一直是头节点
 			// 一旦打印过节点，h就变成打印节点
@@ -130,7 +129,7 @@ public class BinaryTreeTraversalIteration {
 	public static List<Integer> preorderTraversal(TreeNode head) {
 		List<Integer> ans = new ArrayList<>();
 		if (head != null) {
-			Stack<TreeNode> stack = new Stack<>();
+			Deque<TreeNode> stack = new ArrayDeque<>();
 			stack.push(head);
 			while (!stack.isEmpty()) {
 				head = stack.pop();
@@ -151,7 +150,7 @@ public class BinaryTreeTraversalIteration {
 	public static List<Integer> inorderTraversal(TreeNode head) {
 		List<Integer> ans = new ArrayList<>();
 		if (head != null) {
-			Stack<TreeNode> stack = new Stack<>();
+			Deque<TreeNode> stack = new ArrayDeque<>();
 			while (!stack.isEmpty() || head != null) {
 				if (head != null) {
 					stack.push(head);
@@ -172,8 +171,9 @@ public class BinaryTreeTraversalIteration {
 	public static List<Integer> postorderTraversalTwoStacks(TreeNode head) {
 		List<Integer> ans = new ArrayList<>();
 		if (head != null) {
-			Stack<TreeNode> stack = new Stack<>();
-			Stack<TreeNode> collect = new Stack<>();
+			Deque<TreeNode> stack = new ArrayDeque<>();
+			Deque<TreeNode> collect = new ArrayDeque<>();
+
 			stack.push(head);
 			while (!stack.isEmpty()) {
 				head = stack.pop();
@@ -198,7 +198,7 @@ public class BinaryTreeTraversalIteration {
 	public static List<Integer> postorderTraversalOneStack(TreeNode h) {
 		List<Integer> ans = new ArrayList<>();
 		if (h != null) {
-			Stack<TreeNode> stack = new Stack<>();
+			Deque<TreeNode> stack = new ArrayDeque<>();
 			stack.push(h);
 			while (!stack.isEmpty()) {
 				TreeNode cur = stack.peek();
