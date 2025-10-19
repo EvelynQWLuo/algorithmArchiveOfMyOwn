@@ -1,4 +1,4 @@
-# 📘 Algorithm Topics
+# 📘 Algorithm Roadmap
 
 A structured list of key algorithm categories and subtopics for quick reference and practice.
 
@@ -36,6 +36,3 @@ A structured list of key algorithm categories and subtopics for quick reference 
 ## 🌴 Tries
 
 ---
-
-> 💡 **Tip:**  
-> Use this as your algorithm roadmap — mark completed topics with ✅ and add links to LeetCode problems or your own code implementations.
