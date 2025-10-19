@@ -8,7 +8,7 @@ package LinkedList;
 // 请你将两个数相加，并以相同形式返回一个表示和的链表。
 // 你可以假设除了数字 0 之外，这两个数都不会以 0 开头
 
-public class AddTwoNumbers {
+public class AddTwoNumbers02 {
 
 
 	public static class ListNode {
@@ -25,7 +25,7 @@ public class AddTwoNumbers {
 		}
 	}
 
-	class Solution {
+	class Solution02 {
 
 		// 也可以复用老链表
 		// 不过这个实现没有这么做，都是生成的新节点(为了教学好懂)

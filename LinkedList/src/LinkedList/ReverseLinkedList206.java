@@ -1,9 +1,12 @@
 package LinkedList;
-
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 // 按值传递、按引用传递
 // 从堆栈角度解释链表节点
 // 以堆栈视角来看链表反转
-public class ListReverse {
+public class ReverseLinkedList206 {
 
 	public static void main(String[] args) {
 		// int、long、byte、short
@@ -58,7 +61,7 @@ public class ListReverse {
 		c[0] = 100;
 	}
 
-	// 单链表节点
+	// 单向链表singly-linked list
 	public static class ListNode {
 		public int val;
 		public ListNode next;
@@ -72,25 +75,35 @@ public class ListReverse {
 			this.next = next;
 		}
 	}
+    //206
+	// 反转单链表测试链接 :https://leetcode.com/problems/reverse-linked-list/description/?envType=problem-list-v2&envId=nxjo4wwd
+    //Time：O(n)，Space：O(1)
+	class Solution206 {
 
-	// 反转单链表测试链接 : https://leetcode.cn/problems/reverse-linked-list/
-	class Solution {
-
+		//head是一个变量，存储第一个node的内存地址的位置
 		public static ListNode reverseList(ListNode head) {
-			ListNode pre = null;
-			ListNode next = null;
-			while (head != null) {
-				next = head.next;
-				head.next = pre;
-				pre = head;
-				head = next;
+			//两个指针，pre指针改变方向，next指针向后移动
+			//链表中 a = b，即指针/节点a 指向 b，赋值操作改指针的走向
+
+			ListNode pre = null; //null不是内存里的区域，它是系统里的一个单独的空间
+			ListNode curr = head;
+
+			while (curr != null) {
+				ListNode next = head.next;  // 1. next指针指向链表的第2个node，即保存下一个节点
+
+				curr.next = pre;   // 2. 第1个节点指向pre，即指向null，or反转当前节点的指向
+                //指针后移
+				pre = curr;      // 3. pre指向head即指向第1个节点
+
+				curr = next;     // 4. head指针指向next指针指向的位置即第2个node，即head指针后移1位
+
 			}
-			return pre;
+			return pre;         //pre就是head
 		}
 
 	}
 
-	// 双链表节点
+	// 双向链表节点
 	public static class DoubleListNode {
 		public int value;
 		public DoubleListNode last;

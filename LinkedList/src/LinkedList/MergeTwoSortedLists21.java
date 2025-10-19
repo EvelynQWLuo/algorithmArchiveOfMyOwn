@@ -7,9 +7,9 @@ package LinkedList;
 // 将两个升序链表合并为一个新的 升序 链表并返回
 // 新链表是通过拼接给定的两个链表的所有节点组成的
 // 测试链接 :
-public class MergeTwoLists {
+public class MergeTwoSortedLists21 {
 
-	// 不要提交这个类
+
 	public static class ListNode {
 		public int val;
 		public ListNode next;
@@ -37,10 +37,16 @@ public class MergeTwoLists {
 			if (head1 == null || head2 == null) {
 				return head1 == null ? head2 : head1;
 			}
+			//先确定head，谁小选谁
+			//然后需要3个指针
+			//curr1是选中的head的链表的第二个node
+			//curr2是未选中的链表的第一个node
+			//pre是新链表上移动的node
 			ListNode head = head1.val <= head2.val ? head1 : head2;
 			ListNode cur1 = head.next;
-			ListNode cur2 = head == head1 ? head2 : head1;
-			ListNode pre = head;
+			ListNode cur2 = head == head1 ? head2 : head1;   //未被选定的链表的第一个节点
+			ListNode pre = head;   // pre是合成的新链表上移动的指针
+
 			while (cur1 != null && cur2 != null) {
 				if (cur1.val <= cur2.val) {
 					pre.next = cur1;
@@ -51,6 +57,9 @@ public class MergeTwoLists {
 				}
 				pre = pre.next;
 			}
+			//当其中一个链表为空后
+			//还需要扫尾
+			//pre.next指向非空的那一个
 			pre.next = cur1 != null ? cur1 : cur2;
 			return head;
 		}
