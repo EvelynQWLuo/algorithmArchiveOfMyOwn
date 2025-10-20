@@ -8,6 +8,14 @@ import java.util.TreeSet;
  * @author Evelyn
  * @version 1.0
  */
+/*
+有序表的用法（认为是集合，但是有序组织）
+TreeSet和TreeMap原理一样，有无伴随数据的区别
+增、删、改、查 + 很多和有序相关的操作(floor、ceilling等)，时间为O(log n)
+有序表比较相同的东西会去重，如果不想去重就加入更多的比较策略（比较器定制）。堆不会去重。
+有序表在java里就是红黑树实现的
+
+ */
 public class Code02_TreeSetAndTreeMap {
 
 	public static void main(String[] args) {
@@ -30,6 +38,7 @@ public class Code02_TreeSetAndTreeMap {
 		treeMap.remove(4);
 		System.out.println(treeMap.get(4) == null);
 
+		System.out.println("======以下是哈希表不能做到，而有序表可以的========");
 		System.out.println(treeMap.firstKey());
 		System.out.println(treeMap.lastKey());
 		// TreeMap中，所有的key，<= 4且最近的key是什么

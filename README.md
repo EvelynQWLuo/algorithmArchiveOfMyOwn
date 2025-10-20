@@ -22,8 +22,13 @@ A structured list of key algorithm categories and subtopics for quick reference 
 - Divide and Conquer 归并分治
 
 ## 🧮 Hash Table
+- Unordered Map --> Hash map
+- Unordered Set   --> Hash set
+- Sorted Map / Ordered Map --> Tree map
+- Sorted Set / Ordered Set  --> Tree set
 
 ## 📝 String
+- 字典序 --> String 比大小
 
 ## 🧱 Stack & Queue
 - Implement Queue using Linked List and Array
@@ -42,6 +47,15 @@ A structured list of key algorithm categories and subtopics for quick reference 
 ## 💰 Greedy Algorithm
 
 ## 🌐 Graph
+- Union-Find
+- Flood Fill
+- Graph Construction / Graph Building
+- Topological Sorting / Topological Order
+- Minimum Spanning Tree (MST)
+- Bidirectional BFS (Bidirectional Breadth-First Search)
+- Shortest Path
+  -Dijkstra’s Algorithm
+
 
 ## 💡 Bit Manipulation
 
