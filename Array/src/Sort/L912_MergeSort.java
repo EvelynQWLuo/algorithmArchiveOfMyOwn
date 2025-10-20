@@ -1,11 +1,5 @@
 package Sort;
 
-
-
-/**
- * @author Evelyn
- * @version 1.0
- */
 /*
 1）左部分排好序、右部分排好序、利用merge过程让左右整体有序
 2）merge过程：谁小拷贝谁，直到左右两部分所有的数字耗尽，再拷贝回原数组
@@ -15,6 +9,10 @@ package Sort;
 6）归并排序为什么比O(n^2)的排序快？因为比较行为没有浪费！
 7）利用归并排序的便利性可以解决很多问题 - 归并分治
 
+ */
+/**
+ * @author Evelyn
+ * @version 1.0
  */
 public class L912_MergeSort {
 

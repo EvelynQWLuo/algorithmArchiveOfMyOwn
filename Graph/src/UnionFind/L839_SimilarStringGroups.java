@@ -12,13 +12,17 @@ package UnionFind;
 // 给你一个字符串列表 strs列表中的每个字符串都是 strs 中其它所有字符串的一个字母异位词。
 // 返回 strs 中有多少字符串组
 // 测试链接 : https://leetcode.cn/problems/similar-string-groups/
-public class Code04_SimilarStringGroups {
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
+public class L839_SimilarStringGroups {
 
 	public static int MAXN = 301;
 
 	public static int[] father = new int[MAXN];
 
-	public static int sets;
+	public static int sets;    //统计最终有几个集合
 
 	public static void build(int n) {
 		for (int i = 0; i < n; i++) {
@@ -45,13 +49,21 @@ public class Code04_SimilarStringGroups {
 
 	public static int numSimilarGroups(String[] strs) {
 		int n = strs.length;
-		int m = strs[0].length();
+		int m = strs[0].length();      //string长度，anagram都一样长
 		build(n);
+
 		for (int i = 0; i < n; i++) {
 			for (int j = i + 1; j < n; j++) {
+
+				/*
+				逻辑：比较两个异构词anagram是否相似similar
+				1、查代表节点，一样不用考虑，肯定相似，因为已经被合并到同一个set
+				2、不一样如何比较String是否相似？
+				     遍历两个String，只有完全一样和有两个位置不一样才similar
+				 */
 				if (find(i) != find(j)) {
-					int diff = 0;
-					for (int k = 0; k < m && diff < 3; k++) {
+					int diff = 0;   //不一样的位置有几个
+					for (int k = 0; k < m && diff < 3; k++) {      // diff大于2就没必要继续了
 						if (strs[i].charAt(k) != strs[j].charAt(k)) {
 							diff++;
 						}
@@ -60,6 +72,8 @@ public class Code04_SimilarStringGroups {
 						union(i, j);
 					}
 				}
+
+
 			}
 		}
 		return sets;

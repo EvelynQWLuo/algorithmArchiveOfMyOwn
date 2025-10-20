@@ -13,6 +13,10 @@ package DivideAndConquer;
 5）Time & Space 同merge sort
 
  */
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 
 public class L493_ReversePairs {
 

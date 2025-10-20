@@ -1,5 +1,6 @@
 package UnionFind;
 
+
 // 并查集模版(洛谷)
 // 本实现用递归函数实现路径压缩，而且省掉了小挂大的优化，一般情况下可以省略
 // 测试链接 : https://www.luogu.com.cn/problem/P3367
@@ -14,11 +15,16 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StreamTokenizer;
 
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 public class Code02_UnionFindLuogu {
 
 	public static int MAXN = 200001;
 
 	public static int[] father = new int[MAXN];
+	//不用小挂大，那就不需要统计size
 
 	public static int n;
 
@@ -27,7 +33,13 @@ public class Code02_UnionFindLuogu {
 			father[i] = i;
 		}
 	}
-
+// father[0, 0, 1,  2,   3]
+	//    i :0  1   2   3    4
+	/*
+	1、i !=father[i], 即证明i肯定不指向它自己
+	2.  需要把i目前指向的节点father[i]改成，整个链条上的代表节点，通过find（father[i]）来查找i所指向的node的代表node
+	3、返回最终的father[i]，就是整个链条上的代表节点
+	 */
 	public static int find(int i) {
 		if (i != father[i]) {
 			father[i] = find(father[i]);
@@ -36,10 +48,13 @@ public class Code02_UnionFindLuogu {
 	}
 
 	public static boolean isSameSet(int x, int y) {
+
 		return find(x) == find(y);
 	}
 
+	//不用小挂大，随便挂
 	public static void union(int x, int y) {
+
 		father[find(x)] = find(y);
 	}
 

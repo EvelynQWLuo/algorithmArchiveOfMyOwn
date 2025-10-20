@@ -13,6 +13,10 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StreamTokenizer;
 
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 public class Code01_QuickSort {
 
 	public static int MAXN = 100001;

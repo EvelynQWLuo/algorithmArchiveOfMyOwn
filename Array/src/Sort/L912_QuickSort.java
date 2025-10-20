@@ -2,7 +2,10 @@ package Sort;
 
 // 随机快速排序，填函数练习风格
 // 测试链接 : https://leetcode.cn/problems/sort-an-array/
-
+/**
+ * @author Evelyn
+ * @version 1.0
+ */
 public class L912_QuickSort {
 
 	public static int[] sortArray(int[] nums) {
