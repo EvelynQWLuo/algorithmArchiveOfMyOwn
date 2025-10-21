@@ -13,6 +13,10 @@ A structured list of key algorithm categories and subtopics for quick reference 
 - Two Pointers
 
 ## 🔗 Linked List
+- PreOrder
+- Inorder
+- PostOrder
+- Level Order
 
 ## 🔁 Recursion & Master Theorem (Master 公式)
 
@@ -20,6 +24,14 @@ A structured list of key algorithm categories and subtopics for quick reference 
 - 3 basic sort - Selection, Bubble & Insertion
 - Merge Sort
 - Divide and Conquer 归并分治
+- Quick Sort
+- Randomized QuickSort
+- Heap Sort
+- Heap Data Structure
+- Max Heap / Min Heap
+- Priority Queue
+- Count Sort
+- Radix Sort
 
 ## 🧮 Hash Table
 - Unordered Map --> Hash map
@@ -29,6 +41,7 @@ A structured list of key algorithm categories and subtopics for quick reference 
 
 ## 📝 String
 - 字典序 --> String 比大小
+- KMP
 
 ## 🧱 Stack & Queue
 - Implement Queue using Linked List and Array
@@ -54,11 +67,13 @@ A structured list of key algorithm categories and subtopics for quick reference 
 - Minimum Spanning Tree (MST)
 - Bidirectional BFS (Bidirectional Breadth-First Search)
 - Shortest Path
-  -Dijkstra’s Algorithm
+
 
 
 ## 💡 Bit Manipulation
 
 ## 🌴 Tries
+
+## Design Data Structure
 
 ---

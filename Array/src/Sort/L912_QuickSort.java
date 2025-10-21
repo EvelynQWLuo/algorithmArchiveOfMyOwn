@@ -35,7 +35,7 @@ public class L912_QuickSort {
 	// 划分数组 <=x放左边，>x放右边，并且确保划分完成后<=x区域的最后一个数字是x
 	//partition过程，最后返回的是x的index
 	public static int partition1(int[] arr, int l, int r, int x) {
-		// a : arr[l....a-1]范围是<=x的区域
+		// a : arr[l....a-1]范围是<=x的区域, a是这个区域的越界范围
 		// xi : 记录在<=x的区域上任何一个x的位置，哪一个都可以
 		int a = l, xi = 0;
 		for (int i = l; i <= r; i++) {
@@ -74,15 +74,23 @@ public class L912_QuickSort {
 		quickSort2(arr, right + 1, r);
 	}
 
+
 	// 荷兰国旗问题
+	/*
+	过程：1、<x， a，i，交换，a++，i++
+            2、=x，i++
+            3、>x，b，i，交换，b - -, i不变
+            当i>b时，结束
+        i永远不回退，time On
+	 */
 	public static int first, last;
 
 	// 已知arr[l....r]范围上一定有x这个值
 	// 划分数组 <x放左边，==x放中间，>x放右边
 	// 把全局变量first, last，更新成==x区域的左右边界
 	public static void partition2(int[] arr, int l, int r, int x) {
-		first = l;
-		last = r;
+		first = l;    //a
+		last = r;     //b
 		int i = l;
 		while (i <= last) {
 			if (arr[i] == x) {

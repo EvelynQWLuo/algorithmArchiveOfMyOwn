@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 //704
 // 有序数组中是否存在一个数字
-public class Code01_FindNumber {
+public class L704_FindNumber {
 
 	// 为了验证
 	public static void main(String[] args) {
