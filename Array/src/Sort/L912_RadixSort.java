@@ -54,10 +54,11 @@ public class L912_RadixSort {
 	// 基数排序核心代码
 	// arr内要保证没有负数
 	// n是arr的长度
-	// bits是arr中最大值在BASE进制下有几位
-	public static void radixSort(int[] arr, int n, int bits) {
+	// bits是arr中最大值在BASE进制下有几位，10进制要用digits，bits是用来表示二进制的
+	public static void radixSort(int[] arr, int n, int digits) {
 		// 理解的时候可以假设BASE = 10
-		for (int offset = 1; bits > 0; offset *= BASE, bits--) {
+		for (int offset = 1; digits > 0; offset *= BASE, digits--) {
+
 			Arrays.fill(cnts, 0);
 			for (int i = 0; i < n; i++) {
 				// 数字提取某一位的技巧

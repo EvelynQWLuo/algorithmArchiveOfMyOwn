@@ -13,10 +13,7 @@ A structured list of key algorithm categories and subtopics for quick reference 
 - Two Pointers
 
 ## 🔗 Linked List
-- PreOrder
-- Inorder
-- PostOrder
-- Level Order
+
 
 ## 🔁 Recursion & Master Theorem (Master 公式)
 
@@ -53,6 +50,10 @@ A structured list of key algorithm categories and subtopics for quick reference 
 
 ## 🌳 Binary Tree
 - Binary Tree
+- - PreOrder
+- Inorder
+- PostOrder
+- Level Order
 - Binary Search Tree
 
 ## 🎯 Backtracking
