@@ -1,9 +1,6 @@
 package backtracking;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Evelyn
@@ -341,5 +338,227 @@ class Solution90 {
 
         }
 
+    }
+}
+
+//491. Non-decreasing Subsequences
+class Solution491 {
+    List<List<Integer>> result = new ArrayList<>();
+    ArrayDeque<Integer> path = new ArrayDeque<>();
+
+    public List<List<Integer>> findSubsequences(int[] nums) {
+        backtracking(nums, 0);
+        return result;
+    }
+
+    private void backtracking(int[] nums, int startIndex) {
+        if (path.size() >= 2) {
+            result.add(new ArrayList<>(path));
+        }
+
+        // 使用set记录本层已经使用过的元素
+        HashSet<Integer> used = new HashSet<>();
+
+        for (int i = startIndex; i < nums.length; i++) {
+            // 不满足递增条件，跳过
+            if (!path.isEmpty() && nums[i] < path.getLast()) {
+                continue;
+            }
+
+            // 本层已经使用过相同的元素，跳过
+            if (used.contains(nums[i])) {
+                continue;
+            }
+
+            used.add(nums[i]);
+            path.addLast(nums[i]);
+            backtracking(nums, i + 1);
+            path.removeLast();
+        }
+    }
+}
+
+//46. Permutations
+class Solution46 {
+    List<List<Integer>> result = new ArrayList<>();
+    ArrayDeque<Integer> path = new ArrayDeque<>();
+    boolean[] used;
+
+    public List<List<Integer>> permute(int[] nums) {
+        used = new boolean[nums.length];
+        backtracking(nums);
+        return result;
+    }
+
+    private void backtracking(int[] nums) {
+        if (path.size() == nums.length) {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i] == true) {
+                continue;
+            }
+            path.addLast(nums[i]);
+            used[i] = true;
+            backtracking(nums);
+            path.removeLast();
+            used[i] = false;
+        }
+    }
+}
+
+//47. Permutations II
+class Solution47 {
+    List<List<Integer>> result = new ArrayList<>();
+    ArrayDeque<Integer> path = new ArrayDeque<>();
+    boolean[] used;
+
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);
+        used = new boolean[nums.length];
+        backtracking(nums);
+        return result;
+    }
+
+    private void backtracking(int[] nums) {
+        if(path.size() == nums.length) {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+
+        for(int i = 0; i < nums.length; i++) {
+
+            if(used[i]) continue;
+            //!used[i-1]确保在树层上去重，而不是树枝，即前一位是没用的状态
+            if(i > 0 && nums[i] == nums[i-1] && !used[i-1]) continue;
+
+            path.addLast(nums[i]);
+            used[i] = true;
+            backtracking(nums);
+            path.removeLast();
+            used[i] = false;
+        }
+    }
+}
+//51. N-Queens
+class Solution51 {
+    //结果
+    List<List<String>> result = new ArrayList<>();
+
+    public List<List<String>> solveNQueens(int n) {
+        //创建chessboard数组，放入'.'
+        char[][] chessboard = new char[n][n];
+        for(char[] c: chessboard){
+
+            Arrays.fill(c, '.');
+
+        }
+        //回溯
+        backtracking(n,chessboard, 0);
+
+        return result;
+
+    }
+
+    private void backtracking(int n, char[][] chessboard, int row){
+
+        if(row == n){
+            result.add(array2List(chessboard));
+            return;
+        }
+
+        for(int col = 0; col < n; col++){
+            if(isValid(n, chessboard, row, col)){
+
+                chessboard[row][col] = 'Q';
+                backtracking(n, chessboard, row +1);
+                chessboard[row][col] ='.';
+            }
+        }
+
+    }
+
+    private List<String> array2List(char[][] chessboard){
+        List<String> list = new ArrayList<>();
+        for(char[] c: chessboard){
+            list.add(new String(c));
+        }
+        return list;
+    }
+
+    private boolean isValid(int n, char[][] chessboard, int row, int col){
+        for(int i = row - 1; i >= 0; i--){
+            if(chessboard[i][col] == 'Q') return false;
+        }
+
+        for(int i = row - 1,j = col - 1; i >= 0&& j >= 0; i--, j--){
+            if(chessboard[i][j] == 'Q') return false;
+        }
+
+
+        for(int i = row - 1,j = col + 1; i >= 0&& j < n; i--, j++){
+            if(chessboard[i][j] == 'Q') return false;
+        }
+
+        return true;
+    }
+}
+
+//37. Sudoku Solver
+class Solution37 {
+    public void solveSudoku(char[][] board) {
+        backtracking(board);
+    }
+
+    private boolean backtracking(char[][] board) {
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+
+                if (board[i][j] != '.')
+                    continue;
+
+                for (char k = '1'; k <= '9'; k++) {//注意这个9，一定是'9'
+
+                    if (isValid(board, i, j, k)) {
+                        board[i][j] = k;
+                        if (backtracking(board))
+                            return true;
+                        board[i][j] = '.';
+                    }
+                }
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isValid(char[][] board, int row, int col, char k) {
+        //check col
+        for (int j = 0; j < 9; j++) {
+            if (board[row][j] == k)
+                return false;
+        }
+        //check row
+        for (int i = 0; i < 9; i++) {
+            if (board[i][col] == k)
+                return false;
+        }
+
+        //check 3*3
+        int startrow = (row / 3) * 3;
+        int startcol = (col / 3) * 3;
+        for (int i = startrow; i < startrow + 3; i++) {
+            for (int j = startcol; j < startcol + 3; j++) {
+                if (board[i][j] == k)
+                    return false;
+
+            }
+        }
+        return true;
     }
 }
