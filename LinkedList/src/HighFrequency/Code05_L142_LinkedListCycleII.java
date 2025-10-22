@@ -2,7 +2,7 @@ package HighFrequency;
 
 // 返回链表的第一个入环节点
 // 测试链接 : https://leetcode.cn/problems/linked-list-cycle-ii/
-public class Code05_LinkedListCycleII {
+public class Code05_L142_LinkedListCycleII {
 
 	// 不要提交这个类
 	public static class ListNode {

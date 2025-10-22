@@ -2,7 +2,7 @@ package HighFrequency;
 
 // 返回两个无环链表相交的第一个节点
 // 测试链接 : https://leetcode.cn/problems/intersection-of-two-linked-lists/
-public class Code01_IntersectionOfTwoLinkedLists {
+public class Code01_L160_IntersectionOfTwoLinkedLists {
 
 	// 提交时不要提交这个类
 	public static class ListNode {
@@ -28,7 +28,7 @@ public class Code01_IntersectionOfTwoLinkedLists {
 		if (a != b) {
 			return null;
 		}
-		if (diff >= 0) {
+		if (diff >= 0) {       //A链表大时，两个指针维持原样，否则，交换，维持a始终指向长的链表
 			a = h1;
 			b = h2;
 		} else {

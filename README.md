@@ -50,7 +50,7 @@ A structured list of key algorithm categories and subtopics for quick reference 
 
 ## 🌳 Binary Tree
 - Binary Tree
-- - PreOrder
+- PreOrder
 - Inorder
 - PostOrder
 - Level Order
@@ -75,6 +75,6 @@ A structured list of key algorithm categories and subtopics for quick reference 
 
 ## 🌴 Tries
 
-## Design Data Structure
+## HighFrequency Data Structure
 
 ---

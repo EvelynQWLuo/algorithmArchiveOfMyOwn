@@ -2,7 +2,7 @@ package HighFrequency;
 
 // 判断链表是否是回文结构
 // 测试链接 : https://leetcode.cn/problems/palindrome-linked-list/
-public class Code04_PalindromeLinkedList {
+public class Code04_L234_PalindromeLinkedList {
 
 	// 不要提交这个类
 	public static class ListNode {
@@ -22,6 +22,7 @@ public class Code04_PalindromeLinkedList {
 			fast = fast.next.next;
 		}
 		// 现在中点就是slow，从中点开始往后的节点逆序
+		//reverse 中curr就是需要反转的链表的第一个位置
 		ListNode pre = slow;
 		ListNode cur = pre.next;
 		ListNode next = null;

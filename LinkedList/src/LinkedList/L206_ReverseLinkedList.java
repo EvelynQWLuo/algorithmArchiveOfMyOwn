@@ -84,6 +84,7 @@ public class L206_ReverseLinkedList {
 		public static ListNode reverseList(ListNode head) {
 			//两个指针，pre指针改变方向，next指针向后移动
 			//链表中 a = b，即指针/节点a 指向 b，赋值操作改指针的走向
+			//pre始终在curr的前一个位置
 
 			ListNode pre = null; //null不是内存里的区域，它是系统里的一个单独的空间
 			ListNode curr = head;
@@ -93,7 +94,7 @@ public class L206_ReverseLinkedList {
 
 				curr.next = pre;   // 2. 第1个节点指向pre，即指向null，or反转当前节点的指向
                 //指针后移
-				pre = curr;      // 3. pre指向head即指向第1个节点
+				pre = curr;      // 3. pre指向head即指向第1个节点，因为pre始终在curr的前一个位置，而curr需要往后跳，所以pre来到curr位置
 
 				curr = next;     // 4. head指针指向next指针指向的位置即第2个node，即head指针后移1位
 
