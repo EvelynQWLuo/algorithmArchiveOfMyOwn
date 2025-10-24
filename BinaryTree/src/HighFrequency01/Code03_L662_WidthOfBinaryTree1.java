@@ -50,7 +50,11 @@ public class Code03_L662_WidthOfBinaryTree1 {
 	}
 /*
 依然是我的解法
-java原生queue
+java原生queue.
+两个queue，一个存node，一个存它在树中的序号。
+弹出node的时候，同时弹出序号。
+最大宽度即是每一层最右节点和最左节点的序号查，这样就不用考虑中间到底有多少个空的节点。
+每一层最左和最右，分别在queue的头和尾。
  */
 	class MySolution662 {
 		public int widthOfBinaryTree(TreeNode root) {

@@ -21,7 +21,7 @@ public class Code09_L222_CountCompleteTreeNodes {
 
 	// cur : 当前来到的节点
 	// level :  当前来到的节点在第几层
-	// h : 整棵树的高度，不是cur这棵子树的高度
+	// h : 整棵树的高度！！！，不是cur这棵子树的高度
 	// 求 : cur这棵子树上有多少节点
 	public static int f(TreeNode cur, int level, int h) {
 		if (level == h) {
@@ -43,7 +43,7 @@ public class Code09_L222_CountCompleteTreeNodes {
 			level++;
 			cur = cur.left;
 		}
-		return level - 1;
+		return level - 1;  //遇到空才停，所以要减1
 	}
 
 }

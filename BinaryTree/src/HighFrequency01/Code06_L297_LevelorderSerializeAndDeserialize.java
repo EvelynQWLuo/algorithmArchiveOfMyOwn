@@ -26,29 +26,33 @@ public class Code06_L297_LevelorderSerializeAndDeserialize {
 		public static int l, r;
 
 		public String serialize(TreeNode root) {
-			StringBuilder builder = new StringBuilder();
+			StringBuilder sb = new StringBuilder();
+			//思路
+			//进队列的时候，序列化
+			//先序进去，再进队
+			//没有怎么办？
 			if (root != null) {
-				builder.append(root.val + ",");
+				sb.append(root.val + ",");
 				l = 0;
 				r = 0;
 				queue[r++] = root;
 				while (l < r) {
 					root = queue[l++];
 					if (root.left != null) {
-						builder.append(root.left.val + ",");
+						sb.append(root.left.val + ",");
 						queue[r++] = root.left;
 					} else {
-						builder.append("#,");
+						sb.append("#,");      //没有，不加队列，但是序列化
 					}
 					if (root.right != null) {
-						builder.append(root.right.val + ",");
+						sb.append(root.right.val + ",");
 						queue[r++] = root.right;
 					} else {
-						builder.append("#,");
+						sb.append("#,");
 					}
 				}
 			}
-			return builder.toString();
+			return sb.toString();
 		}
 
 		public TreeNode deserialize(String data) {

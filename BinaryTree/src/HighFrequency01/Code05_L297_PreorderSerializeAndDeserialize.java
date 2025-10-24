@@ -1,6 +1,6 @@
 package HighFrequency01;
 
-// 二叉树先序序列化和反序列化
+// 二叉树前序序列化和反序列化
 // 测试链接 : https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/
 public class Code05_L297_PreorderSerializeAndDeserialize {
 
@@ -31,36 +31,39 @@ public class Code05_L297_PreorderSerializeAndDeserialize {
 	public class Codec {
 
 		public String serialize(TreeNode root) {
-			StringBuilder builder = new StringBuilder();
-			f(root, builder);
-			return builder.toString();
+			StringBuilder sb = new StringBuilder();
+			f(root, sb);
+			return sb.toString();
 		}
 
-		void f(TreeNode root, StringBuilder builder) {
-			if (root == null) {
-				builder.append("#,");
-			} else {
-				builder.append(root.val + ",");
-				f(root.left, builder);
-				f(root.right, builder);
+      //序列化
+		void f(TreeNode root, StringBuilder sb) {
+			if (root == null) {                       //如果node为空，只记录一个#，
+				sb.append("#,");
+			} else {                                    //不为空，记录val + ，然后递归左右
+				sb.append(root.val + ",");
+				f(root.left, sb);
+				f(root.right, sb);
 			}
 		}
 
+
+       //反序列化
 		public TreeNode deserialize(String data) {
-			String[] vals = data.split(",");
-			cnt = 0;
-			return g(vals);
+			String[] vals = data.split(",");           //String 按逗号分割成数组
+			index = 0;                //计数
+			return g(vals);       //传入数组
 		}
 
 		// 当前数组消费到哪了
-		public static int cnt;
+		public static int index;
 
 		TreeNode g(String[] vals) {
-			String cur = vals[cnt++];
-			if (cur.equals("#")) {
+			String cur = vals[index++];           //依次取出数组中的每个值
+			if (cur.equals("#")) {                    //如果是#，返回null
 				return null;
-			} else {
-				TreeNode head = new TreeNode(Integer.valueOf(cur));
+			} else {                              //不为空就要创建新弄的
+				TreeNode head = new TreeNode(Integer.valueOf(cur));     //记得String转int
 				head.left = g(vals);
 				head.right = g(vals);
 				return head;
