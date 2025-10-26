@@ -1,11 +1,13 @@
 package HighFrequency02;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 // 收集累加和等于aim的所有路径
 // 测试链接 : https://leetcode.cn/problems/path-sum-ii/
-public class Code03_L113_PathSumII {
+public class Code12_L113_PathSumII {
 
 	// 不提交这个类
 	public static class TreeNode {
@@ -14,7 +16,7 @@ public class Code03_L113_PathSumII {
 		public TreeNode right;
 	}
 
-	// 提交如下的方法
+
 	public static List<List<Integer>> pathSum(TreeNode root, int aim) {
 		List<List<Integer>> ans = new ArrayList<>();
 		if (root != null) {
@@ -51,6 +53,44 @@ public class Code03_L113_PathSumII {
 			copy.add(num);
 		}
 		ans.add(copy);
+	}
+
+
+
+
+	class MySolution113 {
+		List<List<Integer>> ans = new ArrayList<>();
+		List<Integer> path = new ArrayList<>();
+
+		public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+			if (root == null) {
+				return ans;
+			}
+			backtracking(root, targetSum);
+			return ans;
+		}
+
+		public void backtracking(TreeNode root, int targetSum) {
+			path.add(root.val);
+			// 遇到了叶子节点
+			if (root.left == null && root.right == null) {
+				if (targetSum - root.val == 0) {
+					ans.add(new ArrayList(path));
+				}
+				return;
+			}
+			//如果不是leaf 节点
+			if (root.left != null) {
+				backtracking(root.left, targetSum - root.val);
+				path.remove(path.size() - 1);
+			}
+
+			if (root.right != null) {
+				backtracking(root.right, targetSum - root.val);
+				path.remove(path.size() - 1);
+			}
+
+		}
 	}
 
 }

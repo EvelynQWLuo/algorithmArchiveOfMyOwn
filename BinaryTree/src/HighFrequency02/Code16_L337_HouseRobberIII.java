@@ -2,7 +2,7 @@ package HighFrequency02;
 
 // 二叉树打家劫舍问题
 // 测试链接 : https://leetcode.cn/problems/house-robber-iii/
-public class Code07_HouseRobberIII {
+public class Code16_L337_HouseRobberIII {
 
 	// 不提交这个类
 	public static class TreeNode {
@@ -11,7 +11,7 @@ public class Code07_HouseRobberIII {
 		public TreeNode right;
 	}
 
-	// 提交如下的方法
+
 	public static int rob(TreeNode root) {
 		f(root);
 		return Math.max(yes, no);
@@ -26,19 +26,19 @@ public class Code07_HouseRobberIII {
 	public static int no;
 
 	public static void f(TreeNode root) {
-		if (root == null) {
+		if (root == null) {//空树，偷不偷都一样
 			yes = 0;
 			no = 0;
-		} else {
-			int y = root.val;
+		} else {    //非空
+			int y = root.val;  //当前node自己的yes和no
 			int n = 0;
-			f(root.left);
+			f(root.left); //跑完左子树，yes和no更新成左树的yes和no
 			y += no;
 			n += Math.max(yes, no);
-			f(root.right);
+			f(root.right); //跑完右子树，yes和no更新成右树的yes和no
 			y += no;
 			n += Math.max(yes, no);
-			yes = y;
+			yes = y; //都跑完之后，更新全局yes和no
 			no = n;
 		}
 	}

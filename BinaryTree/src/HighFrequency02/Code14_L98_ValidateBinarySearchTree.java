@@ -2,7 +2,7 @@ package HighFrequency02;
 
 // 验证搜索二叉树
 // 测试链接 : https://leetcode.cn/problems/validate-binary-search-tree/
-public class Code05_ValidateBinarySearchTree {
+public class Code14_L98_ValidateBinarySearchTree {
 
 	// 不提交这个类
 	public static class TreeNode {
@@ -11,14 +11,14 @@ public class Code05_ValidateBinarySearchTree {
 		public TreeNode right;
 	}
 
-	// 提交以下的方法
+
 	public static int MAXN = 10001;
 
 	public static TreeNode[] stack = new TreeNode[MAXN];
 
 	public static int r;
 
-	// 提交时改名为isValidBST
+	// 提交时改名为isValidBST，非递归
 	public static boolean isValidBST1(TreeNode head) {
 		if (head == null) {
 			return true;
@@ -43,7 +43,7 @@ public class Code05_ValidateBinarySearchTree {
 
 	public static long min, max;
 
-	// 提交时改名为isValidBST
+	// 提交时改名为isValidBST,递归
 	public static boolean isValidBST2(TreeNode head) {
 		if (head == null) {
 			min = Long.MAX_VALUE;

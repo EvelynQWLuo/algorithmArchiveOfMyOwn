@@ -2,7 +2,7 @@ package HighFrequency02;
 
 // 修剪搜索二叉树
 // 测试链接 : https://leetcode.cn/problems/trim-a-binary-search-tree/
-public class Code06_TrimBinarySearchTree {
+public class Code15_L669_TrimBinarySearchTree {
 
 	// 不提交这个类
 	public static class TreeNode {
@@ -11,7 +11,7 @@ public class Code06_TrimBinarySearchTree {
 		public TreeNode right;
 	}
 
-	// 提交以下的方法
+
 	// [low, high]
 	public static TreeNode trimBST(TreeNode cur, int low, int high) {
 		if (cur == null) {

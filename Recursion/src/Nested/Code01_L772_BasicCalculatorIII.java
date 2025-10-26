@@ -3,11 +3,10 @@ package Nested;
 import java.util.ArrayList;
 
 // 含有嵌套的表达式求值
-// 力扣上本题为会员题，所以额外提供了牛客网的测试链接
-// 如果在牛客网上提交，请将函数名从calculate改为solve
+
 // 测试链接 : https://leetcode.cn/problems/basic-calculator-iii/
-// 测试链接 : https://www.nowcoder.com/practice/c215ba61c8b1443b996351df929dc4d4
-public class Code01_BasicCalculatorIII {
+
+public class Code01_L772_BasicCalculatorIII {
 
 	public static int calculate(String str) {
 		where = 0;
@@ -16,23 +15,28 @@ public class Code01_BasicCalculatorIII {
 
 	public static int where;
 
-	// s[i....]开始计算，遇到字符串终止 或者 遇到)停止
+	// s[i....]开始计算，遇到字符串终止 or 遇到 ) 停止
 	// 返回 : 自己负责的这一段，计算的结果
 	// 返回之间，更新全局变量where，为了上游函数知道从哪继续！
 	public static int f(char[] s, int i) {
 		int cur = 0;
 		ArrayList<Integer> numbers = new ArrayList<>();
 		ArrayList<Character> ops = new ArrayList<>();
+
+		// s[i....]开始计算，遇到字符串终止 or 遇到 ) 停止
 		while (i < s.length && s[i] != ')') {
+			//3种情况，1、遇到数字 2、遇到运算符 3、遇到（
 			if (s[i] >= '0' && s[i] <= '9') {
 				cur = cur * 10 + s[i++] - '0';
+				//2、遇到运算符
 			} else if (s[i] != '(') {
-				// 遇到了运算符 + - * /
+
 				push(numbers, ops, cur, s[i++]);
 				cur = 0;
+				//3、遇到（，即i在（位置，所以直接从i+1调下一层递归
+
 			} else {
-				// i (.....)
-				// 遇到了左括号！
+
 				cur = f(s, i + 1);
 				i = where + 1;
 			}

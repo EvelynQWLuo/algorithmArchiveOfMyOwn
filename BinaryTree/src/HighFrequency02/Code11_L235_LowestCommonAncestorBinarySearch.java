@@ -1,8 +1,8 @@
 package HighFrequency02;
 
-// 搜索二叉树上寻找两个节点的最近公共祖先
+// 二叉搜索树上寻找两个节点的最近公共祖先
 // 测试链接 : https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/
-public class Code02_L235_LowestCommonAncestorBinarySearch {
+public class Code11_L235_LowestCommonAncestorBinarySearch {
 
 	// 不提交这个类
 	public static class TreeNode {
@@ -11,7 +11,9 @@ public class Code02_L235_LowestCommonAncestorBinarySearch {
 		public TreeNode right;
 	}
 
-	// 提交如下的方法
+	/*
+	题中有说明，node唯一
+	 */
 	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 		// root从上到下
 		// 如果先遇到了p，说明p是答案

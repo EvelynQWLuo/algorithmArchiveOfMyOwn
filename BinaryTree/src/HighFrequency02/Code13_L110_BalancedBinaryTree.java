@@ -2,7 +2,7 @@ package HighFrequency02;
 
 // 验证平衡二叉树
 // 测试链接 : https://leetcode.cn/problems/balanced-binary-tree/
-public class Code04_BalancedBinaryTree {
+public class Code13_L110_BalancedBinaryTree {
 
 	// 不提交这个类
 	public static class TreeNode {
@@ -11,7 +11,7 @@ public class Code04_BalancedBinaryTree {
 		public TreeNode right;
 	}
 
-	// 提交如下的方法
+
 	public static boolean balance;
 
 	public static boolean isBalanced(TreeNode root) {
