@@ -4,7 +4,12 @@ package FloodFill;
 // 给你一个 m x n 的矩阵 board ，由若干字符 'X' 和 'O' ，找到所有被 'X' 围绕的区域
 // 并将这些区域里所有的 'O' 用 'X' 填充。
 // 测试链接 : https://leetcode.cn/problems/surrounded-regions/
-public class Code02_SurroundedRegions {
+/*
+1)先沿边界把所有O感染成F
+2）整体遍历，把没有感染成F的O改成X
+3）把F换回O
+ */
+public class Code02_L130_SurroundedRegions {
 
 	public static void solve(char[][] board) {
 		int n = board.length;

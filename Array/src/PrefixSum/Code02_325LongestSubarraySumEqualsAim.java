@@ -65,4 +65,36 @@ public class Code02_325LongestSubarraySumEqualsAim {
 		return ans;
 	}
 
+
+	/*
+	思路：
+	当来到数组的某位置i，在必需以i为结尾的subarray中，往左延伸多长，累加sum等于aim？
+	而0-i总和为1000，则0-x总和为900，剩下i-x为最长和为100的subarray
+
+	 */
+	class MySolution325 {
+		public int maxSubArrayLen(int[] nums, int k) {
+			int ans = 0;
+			if (nums.length == 1 && nums[0] != k) {
+				return ans;
+			}
+
+			HashMap<Integer, Integer> map = new HashMap<>();
+			map.put(0, -1); // 重要 : 0这个前缀和，一个数字也没有的时候，就存在了
+			int sum = 0;
+
+			for (int i = 0; i < nums.length; i++) {
+				sum = sum + nums[i];
+				if (map.containsKey(sum - k)) {
+					ans = Math.max(ans, i - map.get(sum - k));
+				}
+
+				if (!map.containsKey(sum)) {
+					map.put(sum, i);
+				}
+			}
+
+			return ans;
+		}
+	}
 }

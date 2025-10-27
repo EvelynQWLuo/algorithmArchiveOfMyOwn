@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class Code06_1590MakeSumDivisibleByP {
 
 	public static int minSubarray(int[] nums, int p) {
-		// 整体余数
+		// 整体余数，同余原理
 		int mod = 0;
 		for (int num : nums) {
 			mod = (mod + num) % p;

@@ -15,7 +15,7 @@ import java.util.HashMap;
 // 请同学们务必参考如下代码中关于输入、输出的处理
 // 这是输入输出处理效率很高的写法
 // 提交以下的code，提交时请把类名改成"Main"，可以直接通过
-public class Code04_PositivesEqualsNegtivesLongestSubarray {
+public class Code04_525_PositivesEqualsNegtivesLongestSubarray {
 
 	public static int MAXN = 100001;
 
@@ -42,7 +42,7 @@ public class Code04_PositivesEqualsNegtivesLongestSubarray {
 		out.close();
 		br.close();
 	}
-
+//返回无序数组中 正数和负数个数相等的 最长子数组长度
 	public static int compute() {
 		map.clear();
 		map.put(0, -1);
@@ -56,6 +56,30 @@ public class Code04_PositivesEqualsNegtivesLongestSubarray {
 			}
 		}
 		return ans;
+	}
+/*
+就是转化成正负数来做
+ */
+	class Solution525 {
+		public int findMaxLength(int[] nums) {
+
+			HashMap<Integer, Integer> map = new HashMap<>();
+			map.put(0, -1);
+			int ans = 0;
+			int sum = 0;
+
+			for (int i = 0; i < nums.length; i++) {
+				nums[i] = nums[i] == 0 ? -1 : 1;
+				sum = sum + nums[i];
+				if (map.containsKey(sum - 0)) {
+					ans = Math.max(ans, i - map.get(sum - 0));
+				}
+				if (!map.containsKey(sum)) {
+					map.put(sum, i);
+				}
+			}
+			return ans;
+		}
 	}
 
 }

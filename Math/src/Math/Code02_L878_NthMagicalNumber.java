@@ -4,7 +4,7 @@ package Math;
 // 给定三个整数 n , a , b ，返回第 n 个神奇的数字。
 // 因为答案可能很大，所以返回答案 对 1000000007 取模
 // 测试链接 : https://leetcode.cn/problems/nth-magical-number/
-public class Code02_NthMagicalNumber {
+public class Code02_L878_NthMagicalNumber {
 
 	public static int nthMagicalNumber(int n, int a, int b) {
 		long lcm = lcm(a, b);

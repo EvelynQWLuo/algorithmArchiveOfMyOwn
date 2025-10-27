@@ -15,7 +15,7 @@ A structured list of key algorithm categories and subtopics for quick reference 
 ## 🔗 Linked List
 
 
-## 🔁 Recursion & Master Theorem (Master 公式)
+## 🔁 Recursion & Master Theorem 
 
 ## ⚙️ Sorting
 - 3 basic sort - Selection, Bubble & Insertion
@@ -61,9 +61,9 @@ A structured list of key algorithm categories and subtopics for quick reference 
 ## 💰 Greedy Algorithm
 
 ## 🌐 Graph
+- 3 ways to create Graph
 - Union-Find
 - Flood Fill
-- Graph Construction / Graph Building
 - Topological Sorting / Topological Order
 - Minimum Spanning Tree (MST)
 - Bidirectional BFS (Bidirectional Breadth-First Search)
@@ -76,5 +76,11 @@ A structured list of key algorithm categories and subtopics for quick reference 
 ## 🌴 Tries
 
 ## HighFrequency Data Structure
+
+## Math
+- Greatest Common Divisor
+- Euclidean Algorithm
+- Congruence
+
 
 ---
