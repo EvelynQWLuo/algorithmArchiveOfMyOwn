@@ -6,7 +6,7 @@ package TwoPointers;
 // 返回容器可以储存的最大水量
 // 说明：你不能倾斜容器
 // 测试链接 : https://leetcode.cn/problems/container-with-most-water/
-public class Code05_ContainerWithMostWater {
+public class Code05_L11_ContainerWithMostWater {
 
 	// 时间复杂度O(n)，额外空间复杂度O(1)
 	public static int maxArea(int[] height) {

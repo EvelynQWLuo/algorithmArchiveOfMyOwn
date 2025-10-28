@@ -8,9 +8,9 @@ A structured list of key algorithm categories and subtopics for quick reference 
 - Binary Search
 - Binary Search Plus
 - Prefix Sum
-- Difference Array
 - Sliding Window
 - Two Pointers
+- Difference Array
 
 ## 🔗 Linked List
 
@@ -64,7 +64,8 @@ A structured list of key algorithm categories and subtopics for quick reference 
 - 3 ways to create Graph
 - Union-Find
 - Flood Fill
-- Topological Sorting / Topological Order
+- Topological Sort
+- BFS
 - Minimum Spanning Tree (MST)
 - Bidirectional BFS (Bidirectional Breadth-First Search)
 - Shortest Path

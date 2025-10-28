@@ -9,19 +9,21 @@ public class Code01_CreateGraph {
 	public static int MAXN = 11;
 
 	// 边的最大数量
-	// 只有链式前向星方式建图需要这个数量
+	// 只有链式前向星方式建图需要这个数量，邻接矩阵和邻接表都不关心边的数量
 	// 注意如果无向图的最大数量是m条边，数量要准备m*2
 	// 因为一条无向边要加两条有向边
 	public static int MAXM = 21;
 
-	// 邻接矩阵方式建图
+	// 1、邻接矩阵方式建图
 	public static int[][] graph1 = new int[MAXN][MAXN];
 
-	// 邻接表方式建图
+	// 2、邻接表方式建图
+	//无权
 	// public static ArrayList<ArrayList<Integer>> graph2 = new ArrayList<>();
+	//有权
 	public static ArrayList<ArrayList<int[]>> graph2 = new ArrayList<>();
 
-	// 链式前向星方式建图
+	//3、 链式前向星方式建图
 	public static int[] head = new int[MAXN];
 
 	public static int[] next = new int[MAXM];
@@ -33,20 +35,26 @@ public class Code01_CreateGraph {
 
 	public static int cnt;
 
+	/*
+	建图
+	1、第一步：清空
+	 */
 	public static void build(int n) {
-		// 邻接矩阵清空
+		// 1、邻接矩阵清空
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= n; j++) {
 				graph1[i][j] = 0;
 			}
 		}
-		// 邻接表清空和准备
+
+		// 2、邻接表清空和准备
 		graph2.clear();
 		// 下标需要支持1~n，所以加入n+1个列表，0下标准备但不用
 		for (int i = 0; i <= n; i++) {
 			graph2.add(new ArrayList<>());
 		}
-		// 链式前向星清空
+
+		// 3、链式前向星清空
 		cnt = 1;
 		Arrays.fill(head, 1, n + 1, 0);
 	}
@@ -60,44 +68,62 @@ public class Code01_CreateGraph {
 		head[u] = cnt++;
 	}
 
+/*
+=========================以下是有向图带权图=========================
+ */
 	// 三种方式建立有向图带权图
 	public static void directGraph(int[][] edges) {
-		// 邻接矩阵建图
+		// 1、邻接矩阵建图
 		for (int[] edge : edges) {
+			//依次拿出每条边，取出从from到to放到邻接矩阵中对应的位置去，并依次赋上权值
 			graph1[edge[0]][edge[1]] = edge[2];
+			          //起             终             权
 		}
-		// 邻接表建图
+
+		// 2、邻接表建图
 		for (int[] edge : edges) {
+			//有向无权
 			// graph2.get(edge[0]).add(edge[1]);
+			                  //from                  to
+			//有向有权
 			graph2.get(edge[0]).add(new int[] { edge[1], edge[2] });
+			                //from                                 to           权值
 		}
-		// 链式前向星建图
+		//3、 链式前向星建图
 		for (int[] edge : edges) {
 			addEdge(edge[0], edge[1], edge[2]);
 		}
 	}
-
+	/*
+    =========================以下是无向图带权图=========================
+     */
 	// 三种方式建立无向图带权图
 	public static void undirectGraph(int[][] edges) {
-		// 邻接矩阵建图
+		// 1、邻接矩阵建图
 		for (int[] edge : edges) {
+			//双向都需赋权
 			graph1[edge[0]][edge[1]] = edge[2];
 			graph1[edge[1]][edge[0]] = edge[2];
 		}
-		// 邻接表建图
+
+		// 2、邻接表建图
 		for (int[] edge : edges) {
 			// graph2.get(edge[0]).add(edge[1]);
 			// graph2.get(edge[1]).add(edge[0]);
 			graph2.get(edge[0]).add(new int[] { edge[1], edge[2] });
 			graph2.get(edge[1]).add(new int[] { edge[0], edge[2] });
 		}
-		// 链式前向星建图
+
+		// 3、链式前向星建图
 		for (int[] edge : edges) {
 			addEdge(edge[0], edge[1], edge[2]);
 			addEdge(edge[1], edge[0], edge[2]);
 		}
 	}
 
+	/*
+============================以下是遍历============================
+ */
 	public static void traversal(int n) {
 		System.out.println("邻接矩阵遍历 :");
 		for (int i = 1; i <= n; i++) {
@@ -106,6 +132,7 @@ public class Code01_CreateGraph {
 			}
 			System.out.println();
 		}
+//================================================================
 		System.out.println("邻接表遍历 :");
 		for (int i = 1; i <= n; i++) {
 			System.out.print(i + "(邻居、边权) : ");
@@ -114,6 +141,8 @@ public class Code01_CreateGraph {
 			}
 			System.out.println();
 		}
+
+		//================================================================
 		System.out.println("链式前向星 :");
 		for (int i = 1; i <= n; i++) {
 			System.out.print(i + "(邻居、边权) : ");

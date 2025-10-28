@@ -6,8 +6,12 @@ package TwoPointers;
 // 假设 nums 只有 一个重复的整数 ，返回 这个重复的数 。
 // 你设计的解决方案必须 不修改 数组 nums 且只用常量级 O(1) 的额外空间。
 // 测试链接 : https://leetcode.cn/problems/find-the-duplicate-number/
-public class Code02_FindTheDuplicateNumber {
-
+public class Code02_L287_FindTheDuplicateNumber {
+/*
+已知只有一个数，遍历数组，跳到每个index对应的值
+有点像链表的环问题，第一个重复的数字，就是入环节点
+快慢指针
+ */
 	// 时间复杂度O(n)，额外空间复杂度O(1)
 	public static int findDuplicate(int[] nums) {
 		if (nums == null || nums.length < 2) {

@@ -6,13 +6,13 @@ package TwoPointers;
 // 当 nums[i] 为偶数时， i 也是 偶数
 // 你可以返回 任何满足上述条件的数组作为答案
 // 测试链接 : https://leetcode.cn/problems/sort-array-by-parity-ii/
-public class Code01_SortArrayByParityII {
+public class Code01_L922_SortArrayByParityII {
 
 	// 时间复杂度O(n)，额外空间复杂度O(1)
 	public static int[] sortArrayByParityII(int[] nums) {
 		int n = nums.length;
 		for (int odd = 1, even = 0; odd < n && even < n;) {
-			if ((nums[n - 1] & 1) == 1) {
+			if ((nums[n - 1] & 1) == 1) {         //背： 奇数&1=1
 				swap(nums, odd, n - 1);
 				odd += 2;
 			} else {

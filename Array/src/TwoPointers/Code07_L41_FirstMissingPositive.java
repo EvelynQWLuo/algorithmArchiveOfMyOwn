@@ -4,7 +4,7 @@ package TwoPointers;
 // 给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
 // 请你实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案。
 // 测试链接 : https://leetcode.cn/problems/first-missing-positive/
-public class Code07_FirstMissingPositive {
+public class Code07_L41_FirstMissingPositive {
 
 	// 时间复杂度O(n)，额外空间复杂度O(1)
 	public static int firstMissingPositive(int[] arr) {

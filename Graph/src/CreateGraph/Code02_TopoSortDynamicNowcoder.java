@@ -1,7 +1,7 @@
 package CreateGraph;
 
 // 拓扑排序模版（牛客）
-// 链式前向星建图（静态方式）
+// 邻接表建图（动态方式）
 // 测试链接 : https://www.nowcoder.com/practice/88f7e156ca7d43a1a535f619cd3f495c
 // 请同学们务必参考如下代码中关于输入、输出的处理
 // 这是输入输出处理效率很高的写法
@@ -13,22 +13,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StreamTokenizer;
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Code02_TopoSortStaticNowcoder {
+public class Code02_TopoSortDynamicNowcoder {
 
 	public static int MAXN = 200001;
-
-	public static int MAXM = 200001;
-
-	// 建图相关，链式前向星
-	public static int[] head = new int[MAXN];
-
-	public static int[] next = new int[MAXM];
-
-	public static int[] to = new int[MAXM];
-
-	public static int cnt;
 
 	// 拓扑排序，用到队列
 	public static int[] queue = new int[MAXN];
@@ -43,19 +33,6 @@ public class Code02_TopoSortStaticNowcoder {
 
 	public static int n, m;
 
-	public static void build(int n) {
-		cnt = 1;
-		Arrays.fill(head, 0, n + 1, 0);
-		Arrays.fill(indegree, 0, n + 1, 0);
-	}
-
-	// 用链式前向星建图
-	public static void addEdge(int f, int t) {
-		next[cnt] = head[f];
-		to[cnt] = t;
-		head[f] = cnt++;
-	}
-
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer in = new StreamTokenizer(br);
@@ -64,16 +41,21 @@ public class Code02_TopoSortStaticNowcoder {
 			n = (int) in.nval;
 			in.nextToken();
 			m = (int) in.nval;
-			build(n);
+			// 动态建图，比赛肯定不行，但是一般大厂笔试、面试允许
+			ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+			for (int i = 0; i <= n; i++) {
+				graph.add(new ArrayList<>());
+			}
+			Arrays.fill(indegree, 0, n + 1, 0);
 			for (int i = 0, from, to; i < m; i++) {
 				in.nextToken();
 				from = (int) in.nval;
 				in.nextToken();
 				to = (int) in.nval;
-				addEdge(from, to);
+				graph.get(from).add(to);
 				indegree[to]++;
 			}
-			if (!topoSort()) {
+			if (!topoSort(graph)) {
 				out.println(-1);
 			} else {
 				for (int i = 0; i < n - 1; i++) {
@@ -87,7 +69,9 @@ public class Code02_TopoSortStaticNowcoder {
 		br.close();
 	}
 
-	public static boolean topoSort() {
+	// 有拓扑排序返回true
+	// 没有拓扑排序返回false
+	public static boolean topoSort(ArrayList<ArrayList<Integer>> graph) {
 		l = r = 0;
 		for (int i = 1; i <= n; i++) {
 			if (indegree[i] == 0) {
@@ -98,10 +82,9 @@ public class Code02_TopoSortStaticNowcoder {
 		while (l < r) {
 			int cur = queue[l++];
 			ans[fill++] = cur;
-			// 用链式前向星的方式，遍历cur的相邻节点
-			for (int ei = head[cur]; ei != 0; ei = next[ei]) {
-				if (--indegree[to[ei]] == 0) {
-					queue[r++] = to[ei];
+			for (int next : graph.get(cur)) {
+				if (--indegree[next] == 0) {
+					queue[r++] = next;
 				}
 			}
 		}
