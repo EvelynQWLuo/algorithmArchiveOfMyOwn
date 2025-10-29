@@ -5,11 +5,16 @@ package TwoPointers;
 // 请你实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案。
 // 测试链接 : https://leetcode.cn/problems/first-missing-positive/
 public class Code07_L41_FirstMissingPositive {
+/*
+跟quick sort的荷兰国旗法一个思路
+用l和r区分排序完成的和垃圾区
+整体需要调整的分为5中情况
 
+ */
 	// 时间复杂度O(n)，额外空间复杂度O(1)
 	public static int firstMissingPositive(int[] arr) {
 		// l的左边，都是做到i位置上放着i+1的区域
-		// 永远盯着l位置的数字看，看能不能扩充(l++)
+		     // 永远盯着l位置的数字看，看能不能扩充(l++)
 		int l = 0;
 		// [r....]垃圾区
 		// 最好的状况下，认为1~r是可以收集全的，每个数字收集1个，不能有垃圾

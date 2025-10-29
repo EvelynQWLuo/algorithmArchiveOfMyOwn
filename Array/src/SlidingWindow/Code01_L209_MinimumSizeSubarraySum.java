@@ -5,10 +5,14 @@ package SlidingWindow;
 // 找到累加和 >= target 的长度最小的子数组并返回其长度
 // 如果不存在符合条件的子数组返回0
 // 测试链接 : https://leetcode.cn/problems/minimum-size-subarray-sum/
-public class Code01_MinimumSizeSubarraySum {
+public class Code01_L209_MinimumSizeSubarraySum {
+/*
+首先题中说了数组是正数，所以，窗口范围变大，和变大，范围变小和变小
 
+ */
 	public static int minSubArrayLen(int target, int[] nums) {
 		int ans = Integer.MAX_VALUE;
+		//循环由r控制
 		for (int l = 0, r = 0, sum = 0; r < nums.length; r++) {
 			sum += nums[r];
 			while (sum - nums[l] >= target) {

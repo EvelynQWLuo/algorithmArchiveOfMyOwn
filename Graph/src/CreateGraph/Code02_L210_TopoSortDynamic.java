@@ -55,7 +55,7 @@ public class Code02_L210_TopoSortDynamic {
 	/*
     1、建图
     2、加边，同时统计入度
-    3、遍历入度表，取出入度为0的放入队列
+    3、建立队列，遍历入度表，取出入度为0的放入队列
     4、建立结果集，弹出队列中节点并加入结果集，并统计数量
     5、同时遍历每个节点都领居，给他们入度减1，同时检查有没有入度为0的，继续放入队列
 
@@ -63,7 +63,7 @@ public class Code02_L210_TopoSortDynamic {
 	class MySolution210 {
 		public int[] findOrder(int numCourses, int[][] prerequisites) {
 			List<List<Integer>> graph = new ArrayList<>();
-			for (int i = 0; i < numCourses; i++) {
+			for (int i = 0; i <= numCourses; i++) {
 				graph.add(new ArrayList<>());
 			}
 

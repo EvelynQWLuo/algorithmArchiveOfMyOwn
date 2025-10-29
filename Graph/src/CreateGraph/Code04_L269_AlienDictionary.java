@@ -75,6 +75,12 @@ public class Code04_L269_AlienDictionary {
 
 	class MySolution269 {
 		public String alienOrder(String[] words) {
+			//建图
+			List<List<Integer>> graph = new ArrayList<>();
+			for (int i = 0; i < 26; i++) {
+				graph.add(new ArrayList<>());
+			}
+
 			//26个字母不一定都出现，所以给入度表设置为-1，表示未出现
 			int[] indegree = new int[26];
 			Arrays.fill(indegree, -1);
@@ -85,13 +91,9 @@ public class Code04_L269_AlienDictionary {
 				}
 			}
 
-			//建图
-			List<List<Integer>> graph = new ArrayList<>();
-			for (int i = 0; i < 26; i++) {
-				graph.add(new ArrayList<>());
-			}
 
-			//遍历words数组,加边
+
+			//遍历words数组,两个word为1组
 			for (int i = 0, j; i < words.length - 1; i++) {
 				String from = words[i];
 				String to = words[i + 1];

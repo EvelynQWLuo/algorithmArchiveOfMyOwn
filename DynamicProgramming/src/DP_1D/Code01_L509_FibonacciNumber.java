@@ -13,7 +13,9 @@ import java.util.Arrays;
 // 后续课程一定会讲述！本节课不涉及！
 public class Code01_L509_FibonacciNumber {
 
+	//纯暴力
 	public static int fib1(int n) {
+
 		return f1(n);
 	}
 

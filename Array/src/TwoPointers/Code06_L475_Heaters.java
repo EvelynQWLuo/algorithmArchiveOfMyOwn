@@ -11,7 +11,7 @@ import java.util.Arrays;
 // 测试链接 : https://leetcode.cn/problems/heaters/
 public class Code06_L475_Heaters {
 /*
-当房屋距离两个heater距离一样的话，r一定要向右移动，更有利于后面的
+当房屋距离两个heater距离一样的话，r一定要向右移动，更有利于后面的房屋的求解
  */
 	// 时间复杂度O(n * logn)，因为有排序，额外空间复杂度O(1)
 	public static int findRadius(int[] houses, int[] heaters) {
@@ -21,8 +21,8 @@ public class Code06_L475_Heaters {
 		for (int i = 0, j = 0; i < houses.length; i++) {
 			// i号房屋
 			// j号供暖器
-			while (!best(houses, heaters, i, j)) {
-				j++;
+			while (!best(houses, heaters, i, j)) { //如果i号房屋选择j号heater不是最优
+				j++; //heater移动
 			}
 			ans = Math.max(ans, Math.abs(heaters[j] - houses[i]));
 		}
@@ -41,4 +41,28 @@ public class Code06_L475_Heaters {
 			   Math.abs(heaters[j] - houses[i]) < Math.abs(heaters[j + 1] - houses[i]);
 	}
 
-}
+	class MySolution {
+		public int findRadius(int[] houses, int[] heaters) {
+			Arrays.sort(houses);
+			Arrays.sort(heaters);
+			int ans = 0;
+			for (int i = 0, j = 0; i < houses.length; i++) {
+				while (!best(houses, heaters, i, j)) {
+					j++;
+				}
+				ans = Math.max(ans, Math.abs(houses[i] - heaters[j]));
+			}
+			return ans;
+		}
+
+		public boolean best(int[] houses, int[] heaters, int i, int j) {
+			if (j == heaters.length - 1)
+				return true;
+			if (Math.abs(houses[i] - heaters[j]) < Math.abs(houses[i] - heaters[j + 1])) {
+				return true;
+			}
+			return false;
+		}
+
+	}
+	}
