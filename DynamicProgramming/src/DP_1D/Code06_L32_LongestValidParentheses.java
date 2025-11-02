@@ -11,7 +11,7 @@ public class Code06_L32_LongestValidParentheses {
 		char[] s = str.toCharArray();
 		// dp[0...n-1]
 		// dp[i] : 子串必须以i位置的字符结尾的情况下，往左整体有效的最大长度
-		int[] dp = new int[s.length];
+		int[] dp = new int[s.length]; //dp[0]默认就是0，省掉了
 		int ans = 0;
 		for (int i = 1, p; i < s.length; i++) {
 			if (s[i] == ')') {

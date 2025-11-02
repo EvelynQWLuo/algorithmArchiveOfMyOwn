@@ -26,13 +26,17 @@ public class Code03_L91_DecodeWays {
 	// s[i....]有多少种有效的转化方案
 	public static int f1(char[] s, int i) {
 		if (i == s.length) {
-			return 1;
+			return 1;     //为什么返回1？就相当于到越界位置正好有一种解
 		}
+		//没越界
 		int ans;
 		if (s[i] == '0') {
 			ans = 0;
 		} else {
+			//1、i自己单独
 			ans = f1(s, i + 1);
+			//2.i和i+1
+			//'1' - '0' =0, java的特性，char和int之间的隐式转换，两个字符相减得到数字
 			if (i + 1 < s.length && ((s[i] - '0') * 10 + s[i + 1] - '0') <= 26) {
 				ans += f1(s, i + 2);
 			}

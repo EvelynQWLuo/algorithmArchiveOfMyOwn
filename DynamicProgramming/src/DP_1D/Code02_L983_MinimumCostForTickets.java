@@ -22,17 +22,19 @@ public class Code02_L983_MinimumCostForTickets {
 
 	// 暴力尝试
 	public static int mincostTickets1(int[] days, int[] costs) {
+
 		return f1(days, costs, 0);
 	}
 
 	// days[i..... 最少花费是多少 
 	public static int f1(int[] days, int[] costs, int i) {
+
 		if (i == days.length) {
-			// 后续已经无旅行了
+			// 后续已经无旅行了，即不再有花费，返回0
 			return 0;
 		}
 		// i下标 : 第days[i]天，有一场旅行
-		// i.... 最少花费是多少 
+		// ans：从i开始，最少花费是多少
 		int ans = Integer.MAX_VALUE;
 		for (int k = 0, j = i; k < 3; k++) {
 			// k是方案编号 : 0 1 2

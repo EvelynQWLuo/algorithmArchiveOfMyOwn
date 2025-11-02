@@ -9,7 +9,7 @@ import java.util.Arrays;
 // 例如，[1,2,3,1,2] 中有 3 个不同的整数：1，2，以及 3。
 // 子数组 是数组的 连续 部分。
 // 测试链接 : https://leetcode.cn/problems/subarrays-with-k-different-integers/
-public class Code06_SubarraysWithKDifferentIntegers {
+public class Code06_L992_SubarraysWithKDifferentIntegers {
 
 	public static int subarraysWithKDistinct(int[] arr, int k) {
 		return numsOfMostKinds(arr, k) - numsOfMostKinds(arr, k - 1);

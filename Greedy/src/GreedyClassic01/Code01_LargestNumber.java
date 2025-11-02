@@ -109,9 +109,9 @@ public class Code01_LargestNumber {
 		for (int i = 0; i < n; i++) {
 			strs[i] = String.valueOf(nums[i]);
 		}
-		Arrays.sort(strs, (a, b) -> (b + a).compareTo(a + b));
+		Arrays.sort(strs, (a, b) -> (b + a).compareTo(a + b));  //排序啊排序
 		if (strs[0].equals("0")) {
-			return "0";
+			return "0";     //注意是双引号
 		}
 		StringBuilder path = new StringBuilder();
 		for (String s : strs) {

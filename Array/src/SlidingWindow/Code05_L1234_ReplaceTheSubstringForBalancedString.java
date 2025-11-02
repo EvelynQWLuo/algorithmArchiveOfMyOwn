@@ -8,12 +8,13 @@ package SlidingWindow;
 // 请返回待替换子串的最小可能长度。
 // 如果原字符串自身就是一个平衡字符串，则返回 0。
 // 测试链接 : https://leetcode.cn/problems/replace-the-substring-for-balanced-string/
-public class Code05_ReplaceTheSubstringForBalancedString {
-
+public class Code05_L1234_ReplaceTheSubstringForBalancedString {
+      //转化成76.最小覆盖substring
 	public static int balancedString(String str) {
 		int n = str.length();
 		int[] s = new int[n];
 		int[] cnts = new int[4];
+		//把4个字母转化成数字，统计每个数字出现的次数
 		for (int i = 0; i < n; i++) {
 			char c = str.charAt(i);
 			s[i] = c == 'W' ? 1 : (c == 'E' ? 2 : (c == 'R' ? 3 : 0));
@@ -44,6 +45,59 @@ public class Code05_ReplaceTheSubstringForBalancedString {
 			}
 		}
 		return ans;
+	}
+
+	class MySolution {
+		public int balancedString(String s) {
+			int n = s.length();
+			int[] str = new int[n];
+			int[] count = new int[4];
+
+			for (int i = 0; i < n; i++) {
+				char c = s.charAt(i);
+				if (c == 'Q') {
+					str[i] = 0;
+
+				} else if (c == 'W') {
+					str[i] = 1;
+				} else if (c == 'E') {
+					str[i] = 2;
+				} else {
+					str[i] = 3;
+				}
+				count[str[i]]++;
+			}
+
+			int debt = 0;
+			for (int i = 0; i < 4; i++) {
+				if (count[i] < n / 4) {
+					count[i] = 0;
+				} else {
+					count[i] = n / 4 - count[i];
+					debt -= count[i];
+				}
+			}
+			if (debt == 0) {
+				return 0;
+			}
+
+			int ans = Integer.MAX_VALUE;
+
+			for (int l = 0, r = 0; r < n; r++) {
+				count[str[r]]++;
+				if (count[str[r]] <= 0) {
+					debt--;
+				}
+				if (debt == 0) {
+					while (count[str[l]] > 0) {
+						count[str[l]]--;
+						l++;
+					}
+					ans = Math.min(ans,r-l+1);
+				}
+			}
+			return ans;
+		}
 	}
 
 }

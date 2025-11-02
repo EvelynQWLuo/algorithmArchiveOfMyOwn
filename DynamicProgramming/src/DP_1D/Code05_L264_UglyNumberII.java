@@ -7,6 +7,9 @@ package DP_1D;
 public class Code05_L264_UglyNumberII {
 
 	// 时间复杂度O(n)，n代表第n个丑数
+	/*
+	思路：
+	 */
 	public static int nthUglyNumber(int n) {
 		// dp 0 1 2 ...  n
 		//      1 2 ...  ?

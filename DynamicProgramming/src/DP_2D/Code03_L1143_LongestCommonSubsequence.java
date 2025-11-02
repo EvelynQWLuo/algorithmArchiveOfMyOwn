@@ -8,6 +8,7 @@ package DP_2D;
 // 测试链接 : https://leetcode.cn/problems/longest-common-subsequence/
 public class Code03_L1143_LongestCommonSubsequence {
 
+	//brute force
 	public static int longestCommonSubsequence1(String str1, String str2) {
 		char[] s1 = str1.toCharArray();
 		char[] s2 = str2.toCharArray();
@@ -18,9 +19,13 @@ public class Code03_L1143_LongestCommonSubsequence {
 
 	// s1[0....i1]与s2[0....i2]最长公共子序列长度
 	public static int f1(char[] s1, char[] s2, int i1, int i2) {
+		//base case
 		if (i1 < 0 || i2 < 0) {
 			return 0;
 		}
+
+       // consider four possible cases，即4种以i1，i2结尾的所有可能性
+      //以结尾考虑可能性，非常常用，直接记
 		int p1 = f1(s1, s2, i1 - 1, i2 - 1);
 		int p2 = f1(s1, s2, i1 - 1, i2);
 		int p3 = f1(s1, s2, i1, i2 - 1);
@@ -28,6 +33,9 @@ public class Code03_L1143_LongestCommonSubsequence {
 		return Math.max(Math.max(p1, p2), Math.max(p3, p4));
 	}
 
+	/*
+	==============================暴力优化版
+	 */
 	// 为了避免很多边界讨论
 	// 很多时候往往不用下标来定义尝试，而是用长度来定义尝试
 	// 因为长度最短是0，而下标越界的话讨论起来就比较麻烦
@@ -54,6 +62,8 @@ public class Code03_L1143_LongestCommonSubsequence {
 		return ans;
 	}
 
+
+
 	// 记忆化搜索
 	public static int longestCommonSubsequence3(String str1, String str2) {
 		char[] s1 = str1.toCharArray();
@@ -70,13 +80,14 @@ public class Code03_L1143_LongestCommonSubsequence {
 	}
 
 	public static int f3(char[] s1, char[] s2, int len1, int len2, int[][] dp) {
-		if (len1 == 0 || len2 == 0) {
+		if (len1 == 0 || len2 == 0) {  //或，或，或
 			return 0;
 		}
 		if (dp[len1][len2] != -1) {
 			return dp[len1][len2];
 		}
 		int ans;
+		//s1,s2是String的Array，所以要注意index
 		if (s1[len1 - 1] == s2[len2 - 1]) {
 			ans = f3(s1, s2, len1 - 1, len2 - 1, dp) + 1;
 		} else {
@@ -93,6 +104,7 @@ public class Code03_L1143_LongestCommonSubsequence {
 		int n = s1.length;
 		int m = s2.length;
 		int[][] dp = new int[n + 1][m + 1];
+		//为什么这俩for循环从1开始
 		for (int len1 = 1; len1 <= n; len1++) {
 			for (int len2 = 1; len2 <= m; len2++) {
 				if (s1[len1 - 1] == s2[len2 - 1]) {

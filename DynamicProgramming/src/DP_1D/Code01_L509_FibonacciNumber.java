@@ -13,7 +13,7 @@ import java.util.Arrays;
 // 后续课程一定会讲述！本节课不涉及！
 public class Code01_L509_FibonacciNumber {
 
-	//纯暴力
+	//纯暴力，每个节点都要展开，所以是2^n
 	public static int fib1(int n) {
 
 		return f1(n);
@@ -28,7 +28,12 @@ public class Code01_L509_FibonacciNumber {
 		}
 		return f1(i - 1) + f1(i - 2);
 	}
+/*
+======================================优化1：记忆化搜索==================================
 
+         自顶向底
+ */
+	//时间O n，相当于每个节点只处理一次
 	public static int fib2(int n) {
 		int[] dp = new int[n + 1];
 		Arrays.fill(dp, -1);
@@ -49,7 +54,9 @@ public class Code01_L509_FibonacciNumber {
 		dp[i] = ans;
 		return ans;
 	}
-
+/*
+=======================自底到顶，dp=======================
+ */
 	public static int fib3(int n) {
 		if (n == 0) {
 			return 0;

@@ -8,12 +8,18 @@ package SlidingWindow;
 // 则返回出发时加油站的编号，否则返回 -1
 // 如果存在解，则 保证 它是 唯一 的。
 // 测试链接 : https://leetcode.cn/problems/gas-station/
-public class Code04_GasStation {
-
+public class Code04_L134_GasStation {
+/*
+[3    5     -10...]
+0     1       2
+从0出发无法转一圈，那么从1出发，必然无法转一圈
+ */
 	public static int canCompleteCircuit(int[] gas, int[] cost) {
+		//余量gas[i] - cost[i]
 		int n = gas.length;
 		// 本来下标是0..n-1，但是扩充到0..2*n-1，i位置的余量信息在(r%n)位置
 		// 窗口范围是[l, r)，左闭右开，也就是说窗口是[l..r-1]，r是到不了的位置
+
 		for (int l = 0, r = 0, sum; l < n; l = r + 1, r = l) {
 			sum = 0;
 			while (sum + gas[r % n] - cost[r % n] >= 0) {

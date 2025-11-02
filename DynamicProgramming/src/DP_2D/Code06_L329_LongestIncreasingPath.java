@@ -69,4 +69,42 @@ public class Code06_L329_LongestIncreasingPath {
 		return next + 1;
 	}
 
+	class MySolution {
+		public int longestIncreasingPath(int[][] matrix) {
+			int n = matrix.length;
+			int m = matrix[0].length;
+			int[][] dp = new int[n][m];
+			int ans = 0;
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < m; j++) {
+					ans = Math.max(dfs(matrix, i, j, dp), ans);
+				}
+			}
+			return ans;
+		}
+
+		public int dfs(int[][] grid, int i, int j, int[][] dp) {
+			if (dp[i][j] != 0) {
+				return dp[i][j];
+			}
+
+			int ans = 0;
+			if (i > 0 && grid[i][j] < grid[i - 1][j]) {
+				ans = Math.max(dfs(grid, i - 1, j, dp), ans);
+			}
+			if (i + 1 < grid.length && grid[i][j] < grid[i + 1][j]) {
+				ans = Math.max(dfs(grid, i + 1, j, dp), ans);
+			}
+			if (j > 0 && grid[i][j] < grid[i][j - 1]) {
+				ans = Math.max(dfs(grid, i, j - 1, dp), ans);
+			}
+			if (j + 1 < grid[0].length && grid[i][j] < grid[i][j + 1]) {
+				ans = Math.max(ans, dfs(grid, i, j + 1, dp));
+			}
+
+			dp[i][j] = ans + 1;
+			return dp[i][j];
+		}
+	}
+
 }

@@ -7,8 +7,9 @@ package DP_2D;
 // 测试链接 : https://leetcode.cn/problems/minimum-path-sum/
 public class Code01_L64_MinimumPathSum {
 
-	// 暴力递归
+	// 暴力递归Brute Force
 	public static int minPathSum1(int[][] grid) {
+
 		return f1(grid, grid.length - 1, grid[0].length - 1);
 	}
 

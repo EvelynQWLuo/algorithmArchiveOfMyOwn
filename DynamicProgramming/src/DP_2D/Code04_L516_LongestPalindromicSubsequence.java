@@ -14,7 +14,7 @@ public class Code04_L516_LongestPalindromicSubsequence {
 		return f1(s, 0, n - 1);
 	}
 
-	// s[l...r]最长回文子序列长度
+	//先只讨论 s[l...r]最长回文子序列长度
 	// l <= r
 	public static int f1(char[] s, int l, int r) {
 		if (l == r) {
@@ -29,19 +29,22 @@ public class Code04_L516_LongestPalindromicSubsequence {
 			return Math.max(f1(s, l + 1, r), f1(s, l, r - 1));
 		}
 	}
-
+/*
+============记忆化搜索========
+记忆化搜索已经能过很多dp的题目了
+ */
 	public static int longestPalindromeSubseq2(String str) {
 		char[] s = str.toCharArray();
 		int n = s.length;
 		int[][] dp = new int[n][n];
 		return f2(s, 0, n - 1, dp);
 	}
-
+//先只讨论 s[l...r]最长回文子序列长度
 	public static int f2(char[] s, int l, int r, int[][] dp) {
 		if (l == r) {
 			return 1;
 		}
-		if (l + 1 == r) {
+		if (l + 1 == r) {    //如果[l,r]这个范围上有两个字符，如果这两个字符相等，或不相等
 			return s[l] == s[r] ? 2 : 1;
 		}
 		if (dp[l][r] != 0) {
@@ -56,7 +59,9 @@ public class Code04_L516_LongestPalindromicSubsequence {
 		dp[l][r] = ans;
 		return ans;
 	}
-
+/*
+================普通二维dp
+ */
 	public static int longestPalindromeSubseq3(String str) {
 		char[] s = str.toCharArray();
 		int n = s.length;
