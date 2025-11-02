@@ -13,6 +13,7 @@ public class Code02_L72_EditDistance {
 	// 已经展示太多次从递归到动态规划了
 	// 直接写动态规划吧
 	public int minDistance(String word1, String word2) {
+
 		return editDistance2(word1, word2, 1, 1, 1);
 	}
 /*
@@ -34,7 +35,16 @@ dp[i][j] :s1[前缀长度为i]想变成s2[前缀长度为j]，至少付出多少
 更近一步优化思考
 s1[i - 1] 和 s2[j - 1]相等时，这个结果一定保留，没有比它更优的，所以直接dp[i][j] = dp[i - 1][j - 1]
 不等的再有另3种情况
+
+二维dp表
+第0行：
+什么意思？s1为空，怎么变成分别有0，1，2,...m个s2的长度？不断插入最终（m-1）*a
+第0列：
+s2为空，s1怎么从0，1，2,...n个变成s2
  */
+
+
+
 	// 原初尝试版
 	// a : str1中插入1个字符的代价
 	// b : str1中删除1个字符的代价
@@ -47,6 +57,7 @@ s1[i - 1] 和 s2[j - 1]相等时，这个结果一定保留，没有比它更优
 		int m = s2.length;
 
 		int[][] dp = new int[n + 1][m + 1];
+		//dp[0][0]:默认是0，就不写了
 		for (int i = 1; i <= n; i++) {
 			dp[i][0] = i * b;
 		}
@@ -71,7 +82,7 @@ s1[i - 1] 和 s2[j - 1]相等时，这个结果一定保留，没有比它更优
 		return dp[n][m];
 	}
 
-	// 枚举小优化版
+	// 枚举小优化版, 但是没有改变时间复杂度
 	// a : str1中插入1个字符的代价
 	// b : str1中删除1个字符的代价
 	// c : str1中改变1个字符的代价
@@ -84,6 +95,7 @@ s1[i - 1] 和 s2[j - 1]相等时，这个结果一定保留，没有比它更优
 		// dp[i][j] :
 		// s1[前缀长度为i]想变成s2[前缀长度为j]，至少付出多少代价
 		int[][] dp = new int[n + 1][m + 1];
+		//dp[0][0]:默认是0，就不写了
 		for (int i = 1; i <= n; i++) {
 			dp[i][0] = i * b;
 		}
@@ -128,4 +140,45 @@ s1[i - 1] 和 s2[j - 1]相等时，这个结果一定保留，没有比它更优
 		return dp[m];
 	}
 
+//时间 O n*m，最大代价就是遍历整个格子，每个格子代价都是O1
+	class MySolution {
+		public int minDistance(String word1, String word2) {
+
+			return editDistance(word1, word2, 1, 1, 1);
+		}
+
+		public int editDistance(String w1, String w2, int a, int b, int c) {
+			char[] s = w1.toCharArray();
+			char[] t = w2.toCharArray();
+			int n = s.length;
+			int m = t.length;
+
+			int[][] dp = new int[n + 1][m + 1];
+			dp[0][0] = 0;
+			for (int i = 1; i <= n; i++) {
+				dp[i][0] = b * i;
+			}
+			for (int j = 1; j <= m; j++) {
+				dp[0][j] = j * c;
+			}
+
+			for (int i = 1; i <= n; i++) {
+				for (int j = 1; j <= m; j++) {
+					int c1 = Integer.MAX_VALUE;
+					if (s[i - 1] == t[j - 1]) {
+						c1 = dp[i - 1][j - 1];
+					}
+					int c2 = Integer.MAX_VALUE;
+					if (s[i - 1] != t[j - 1]) {
+						c2 = dp[i - 1][j - 1] + c;
+					}
+					int c3 = dp[i][j - 1] + a;
+					int c4 = dp[i - 1][j] + b;
+					dp[i][j] = Math.min(Math.min(c1, c2), Math.min(c3, c4));
+				}
+			}
+
+			return dp[n][m];
+		}
+	}
 }

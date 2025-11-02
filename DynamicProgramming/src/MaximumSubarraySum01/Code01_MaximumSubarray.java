@@ -1,4 +1,4 @@
-package MaximumSubarraySum;
+package MaximumSubarraySum01;
 
 // 子数组最大累加和
 // 给你一个整数数组 nums

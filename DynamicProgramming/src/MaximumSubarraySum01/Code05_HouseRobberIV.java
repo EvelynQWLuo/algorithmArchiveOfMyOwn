@@ -1,4 +1,4 @@
-package MaximumSubarraySum;
+package MaximumSubarraySum01;
 
 // 打家劫舍 IV
 // 沿街有一排连续的房屋。每间房屋内都藏有一定的现金

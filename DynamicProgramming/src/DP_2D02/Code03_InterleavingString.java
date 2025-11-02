@@ -18,7 +18,7 @@ public class Code03_InterleavingString {
 		int n = s1.length;
 		int m = s2.length;
 		// dp[i][j]:
-		// s1[前缀长度为i]和s2[前缀长度为j]，能否交错组成出s3[前缀长度为i+j]
+		// s1取前i个，s2取前j个，能不能交错组成出s3的i+j个
 		boolean[][] dp = new boolean[n + 1][m + 1];
 		dp[0][0] = true;
 		for (int i = 1; i <= n; i++) {

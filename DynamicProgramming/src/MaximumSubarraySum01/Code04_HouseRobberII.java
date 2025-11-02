@@ -1,4 +1,4 @@
-package MaximumSubarraySum;
+package MaximumSubarraySum01;
 
 // 环形数组中不能选相邻元素的最大累加和
 // 给定一个数组nums，长度为n

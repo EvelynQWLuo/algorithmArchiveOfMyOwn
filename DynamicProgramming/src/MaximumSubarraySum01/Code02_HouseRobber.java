@@ -1,4 +1,4 @@
-package MaximumSubarraySum;
+package MaximumSubarraySum01;
 
 // 数组中不能选相邻元素的最大累加和
 // 给定一个数组，可以随意选择数字
