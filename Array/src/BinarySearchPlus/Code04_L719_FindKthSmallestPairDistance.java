@@ -8,7 +8,7 @@ import java.util.Arrays;
 // 数对由 nums[i] 和 nums[j] 组成且满足 0 <= i < j < nums.length
 // 返回 所有数对距离中 第 k 小的数对距离。
 // 测试链接 : https://leetcode.cn/problems/find-k-th-smallest-pair-distance/
-public class Code04_FindKthSmallestPairDistance {
+public class Code04_L719_FindKthSmallestPairDistance {
 
 	// 时间复杂度O(n * log(n) + log(max-min) * n)，额外空间复杂度O(1)
 	public static int smallestDistancePair(int[] nums, int k) {

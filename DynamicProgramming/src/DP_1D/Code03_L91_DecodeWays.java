@@ -19,23 +19,29 @@ public class Code03_L91_DecodeWays {
 
 	// 暴力尝试
 	public static int numDecodings1(String s) {
+
 		return f1(s.toCharArray(), 0);
 	}
 
 	// s : 数字字符串 
-	// s[i....]有多少种有效的转化方案
+	// s从i....出发，往后共有多少种有效的转化方案
+	//那么从i出发往后的转化该如何考虑呢？
+	//1、直接转不了
+	//2、i自己转化
+	//3、i和i+1一起转化
 	public static int f1(char[] s, int i) {
+		//base case
 		if (i == s.length) {
-			return 1;     //为什么返回1？就相当于到越界位置正好有一种解
+			return 1;     //为什么返回1？即i可以走到越界的位置，证明前面至少生成了1种方案
 		}
-		//没越界
+		//base case没中，则没越界，继续
 		int ans;
 		if (s[i] == '0') {
 			ans = 0;
 		} else {
-			//1、i自己单独
+			//1、i自己单独，即只要i不是0，那么它必然可以自己转化，就肯定可以得到i+1开始的答案
 			ans = f1(s, i + 1);
-			//2.i和i+1
+			//2.i和i+1，如果i不自己单独，则这个数字组合<=26才可以
 			//'1' - '0' =0, java的特性，char和int之间的隐式转换，两个字符相减得到数字
 			if (i + 1 < s.length && ((s[i] - '0') * 10 + s[i + 1] - '0') <= 26) {
 				ans += f1(s, i + 2);
@@ -44,7 +50,9 @@ public class Code03_L91_DecodeWays {
 		return ans;
 	}
 
-	// 暴力尝试改记忆化搜索
+	/*
+	=====================记忆化搜索===================
+	 */
 	public static int numDecodings2(String s) {
 		int[] dp = new int[s.length()];
 		Arrays.fill(dp, -1);
@@ -71,7 +79,9 @@ public class Code03_L91_DecodeWays {
 		return ans;
 	}
 
-	// 严格位置依赖的动态规划
+	/*
+	======================严格位置依赖的动态规划====================
+	 */
 	public static int numDecodings3(String str) {
 		char[] s = str.toCharArray();
 		int n = s.length;
@@ -90,7 +100,9 @@ public class Code03_L91_DecodeWays {
 		return dp[0];
 	}
 
-	// 严格位置依赖的动态规划 + 空间压缩
+	/*
+	========================空间压缩=======================
+	 */
 	public static int numDecodings4(String s) {
 		// dp[i+1]
 		int next = 1;

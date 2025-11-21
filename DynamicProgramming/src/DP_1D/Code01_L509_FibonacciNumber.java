@@ -14,6 +14,8 @@ import java.util.Arrays;
 public class Code01_L509_FibonacciNumber {
 
 	//纯暴力，每个节点都要展开，所以是2^n
+	//从顶到底展开，即从f(n)往下展开
+	//为什么O n很差？因为在展开过程中，有很多位置重复计算了
 	public static int fib1(int n) {
 
 		return f1(n);
@@ -31,16 +33,18 @@ public class Code01_L509_FibonacciNumber {
 /*
 ======================================优化1：记忆化搜索==================================
 
-         自顶向底
  */
+	//还是从顶到底从n向下展开
 	//时间O n，相当于每个节点只处理一次
+	//用一张Array作缓存表，把每个节点的结果挂上去
 	public static int fib2(int n) {
-		int[] dp = new int[n + 1];
+		int[] dp = new int[n + 1];  //存0到n
 		Arrays.fill(dp, -1);
 		return f2(n, dp);
 	}
 
 	public static int f2(int i, int[] dp) {
+		//base case
 		if (i == 0) {
 			return 0;
 		}
@@ -57,6 +61,7 @@ public class Code01_L509_FibonacciNumber {
 /*
 =======================自底到顶，dp=======================
  */
+	//先算简单位置，后算复杂位置
 	public static int fib3(int n) {
 		if (n == 0) {
 			return 0;
@@ -65,13 +70,17 @@ public class Code01_L509_FibonacciNumber {
 			return 1;
 		}
 		int[] dp = new int[n + 1];
+
+		//dp[0]=0;
 		dp[1] = 1;
 		for (int i = 2; i <= n; i++) {
 			dp[i] = dp[i - 1] + dp[i - 2];
 		}
 		return dp[n];
 	}
-
+/*
+=========================优化空间====================
+ */
 	public static int fib4(int n) {
 		if (n == 0) {
 			return 0;
@@ -79,13 +88,15 @@ public class Code01_L509_FibonacciNumber {
 		if (n == 1) {
 			return 1;
 		}
-		int lastLast = 0, last = 1;
+		int prePre = 0, pre = 1;
+		int curr=0;
 		for (int i = 2, cur; i <= n; i++) {
-			cur = lastLast + last;
-			lastLast = last;
-			last = cur;
+			curr = prePre + pre;
+			prePre = pre;
+			pre = curr;
 		}
-		return last;
+		return curr;
+
 	}
 
 }

@@ -6,7 +6,7 @@ package MaximumSubarraySum01;
 // 可以随意选择数字，但是不能选择相邻的数字
 // 返回能得到的最大累加和
 // 测试链接 : https://leetcode.cn/problems/house-robber-ii/
-public class Code04_HouseRobberII {
+public class Code04_L213_HouseRobberII {
 
 	public static int rob(int[] nums) {
 		int n = nums.length;
@@ -36,6 +36,40 @@ public class Code04_HouseRobberII {
 			pre = cur;
 		}
 		return pre;
+	}
+
+
+	class mySolution {
+		public int rob(int[] nums) {
+			int n = nums.length;
+			if (n == 1) {
+				return nums[0];
+			}
+
+			return Math.max(best(nums, 1, n - 1), best(nums, 2, n - 2) + nums[0]);
+		}
+
+		public int best(int[] nums, int l, int r) {
+			if (l > r) {
+				return 0;
+			}
+			if (l == r) {
+				return nums[l];
+			}
+			if (l + 1 == r) {
+				return Math.max(nums[l], nums[r]);
+			}
+			int n = r - l + 1;
+			int[] dp = new int[l + n];
+			dp[l] = nums[l];
+			dp[l + 1] = Math.max(nums[l], nums[l + 1]);
+           //dp数组主要是要处理好下标问题
+			for (int i = l + 2; i < l + n; i++) {
+				dp[i] = Math.max(dp[i - 1], nums[i] + dp[i - 2]);
+			}
+
+			return dp[l + n - 1];
+		}
 	}
 
 }

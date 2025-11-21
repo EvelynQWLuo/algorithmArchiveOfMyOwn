@@ -5,12 +5,17 @@ package DP_1D;
 // 找出最长有效（格式正确且连续）括号子串的长度。
 // 测试链接 : https://leetcode.cn/problems/longest-valid-parentheses/
 public class Code06_L32_LongestValidParentheses {
-
+/*
+思路：对整个串，子串必须以i位置的字符结尾的情况下，往左整体有效的最大长度
+理解往前为什么只需要跳一步，不需要跳更多？
+ */
 	// 时间复杂度O(n)，n是str字符串的长度
 	public static int longestValidParentheses(String str) {
 		char[] s = str.toCharArray();
 		// dp[0...n-1]
 		// dp[i] : 子串必须以i位置的字符结尾的情况下，往左整体有效的最大长度
+		//1、s[i] ==‘（’，dp[i] ==0
+		//2、s[i] ==‘）’，根据dp[i-1]的值，往前跳到匹配的p位置
 		int[] dp = new int[s.length]; //dp[0]默认就是0，省掉了
 		int ans = 0;
 		for (int i = 1, p; i < s.length; i++) {

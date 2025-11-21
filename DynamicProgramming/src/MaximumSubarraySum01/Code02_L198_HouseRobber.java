@@ -4,7 +4,7 @@ package MaximumSubarraySum01;
 // 给定一个数组，可以随意选择数字
 // 但是不能选择相邻的数字，返回能得到的最大累加和
 // 测试链接 : https://leetcode.cn/problems/house-robber/
-public class Code02_HouseRobber {
+public class Code02_L198_HouseRobber {
 
 	// 动态规划
 	public static int rob1(int[] nums) {
@@ -20,6 +20,7 @@ public class Code02_HouseRobber {
 		dp[0] = nums[0];
 		dp[1] = Math.max(nums[0], nums[1]);
 		for (int i = 2; i < n; i++) {
+			//这个转移方程是建立在nums[i]存在负数的可能性上的
 			dp[i] = Math.max(dp[i - 1], Math.max(nums[i], dp[i - 2] + nums[i]));
 		}
 		return dp[n - 1];
@@ -42,6 +43,25 @@ public class Code02_HouseRobber {
 			pre = cur;
 		}
 		return pre;
+	}
+/*
+leetcode上数组只有正数，所以可以直接这样写
+ */
+	class mySolution {
+		public int rob(int[] nums) {
+			if (nums.length == 1)
+				return nums[0];
+			int n = nums.length;
+			int[] dp = new int[n];
+			dp[0] = nums[0];
+			dp[1] = Math.max(nums[0], nums[1]);
+
+			for (int i = 2; i < n; i++) {
+				dp[i] = Math.max(dp[i - 1], nums[i] + dp[i - 2]);
+			}
+
+			return dp[n - 1];
+		}
 	}
 
 }

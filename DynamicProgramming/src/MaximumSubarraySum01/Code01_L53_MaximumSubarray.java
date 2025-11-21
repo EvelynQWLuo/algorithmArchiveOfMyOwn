@@ -4,7 +4,7 @@ package MaximumSubarraySum01;
 // 给你一个整数数组 nums
 // 返回非空子数组的最大累加和
 // 测试链接 : https://leetcode.cn/problems/maximum-subarray/
-public class Code01_MaximumSubarray {
+public class Code01_L53_MaximumSubarray {
 
 	// 动态规划
 	public static int maxSubArray1(int[] nums) {

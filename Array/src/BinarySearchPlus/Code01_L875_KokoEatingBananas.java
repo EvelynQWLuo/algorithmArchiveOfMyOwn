@@ -9,7 +9,7 @@ package BinarySearchPlus;
 // 珂珂喜欢慢慢吃，但仍然想在警卫回来前吃掉所有的香蕉。
 // 返回她可以在 h 小时内吃掉所有香蕉的最小速度 k（k 为整数）
 // 测试链接 : https://leetcode.cn/problems/koko-eating-bananas/
-public class Code01_KokoEatingBananas {
+public class Code01_L875_KokoEatingBananas {
 
 	// 时间复杂度O(n * log(max))，额外空间复杂度O(1)
 	public static int minEatingSpeed(int[] piles, int h) {
@@ -43,6 +43,9 @@ public class Code01_KokoEatingBananas {
 	// 香蕉重量都在piles
 	// 速度就定成speed
 	// 返回吃完所有的香蕉，耗费的小时数量
+	/*
+	long=====long======long
+	 */
 	public static long f(int[] piles, int speed) {
 		long ans = 0;
 		for (int pile : piles) {

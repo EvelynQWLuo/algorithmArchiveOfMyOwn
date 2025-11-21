@@ -10,7 +10,7 @@ package MaximumSubarraySum01;
 // 另给你一个整数k，表示小偷需要窃取至少 k 间房屋
 // 返回小偷需要的最小窃取能力值
 // 测试链接 : https://leetcode.cn/problems/house-robber-iv/
-public class Code05_HouseRobberIV {
+public class Code05_L2560_HouseRobberIV {
 
 	public static int minCapability(int[] nums, int k) {
 		int n = nums.length, l = nums[0], r = nums[0];

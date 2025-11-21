@@ -5,7 +5,7 @@ package BinarySearchPlus;
 // 你需要将这个数组分成 m 个非空的连续子数组。
 // 设计一个算法使得这 m 个子数组各自和的最大值最小。
 // 测试链接 : https://leetcode.cn/problems/split-array-largest-sum/
-public class Code02_SplitArrayLargestSum {
+public class Code02_L410_SplitArrayLargestSum {
 
 	// 时间复杂度O(n * log(sum))，额外空间复杂度O(1)
 	public static int splitArray(int[] nums, int k) {
@@ -15,7 +15,11 @@ public class Code02_SplitArrayLargestSum {
 		}
 		long ans = 0;
 		// [0,sum]二分
-		for (long l = 0, r = sum, m, need; l <= r;) {
+		long l=0;
+		long r=sum;
+		long m;
+		long need;
+		while (l <= r) {
 			// 中点m
 			m = l + ((r - l) >> 1);
 			// 必须让数组每一部分的累加和 <= m，请问划分成几个部分才够!
@@ -36,15 +40,15 @@ public class Code02_SplitArrayLargestSum {
 	public static int f(int[] arr, long limit) {
 		int parts = 1;
 		int sum = 0;
-		for (int num : arr) {
-			if (num > limit) {
+		for (int i=0;i<arr.length;i++) {
+			if (arr[i] > limit) {
 				return Integer.MAX_VALUE;
 			}
-			if (sum + num > limit) {
+			if (sum + arr[i] > limit) {
 				parts++;
-				sum = num;
+				sum = arr[i];
 			} else {
-				sum += num;
+				sum += arr[i];
 			}
 		}
 		return parts;

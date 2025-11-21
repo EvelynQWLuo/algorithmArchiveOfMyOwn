@@ -21,25 +21,30 @@ public class Code02_L983_MinimumCostForTickets {
 	public static int[] durations = { 1, 7, 30 };
 
 	// 暴力尝试
+	//会超时
 	public static int mincostTickets1(int[] days, int[] costs) {
 
 		return f1(days, costs, 0);
 	}
 
-	// days[i..... 最少花费是多少 
+	// 从第i天..... 开始旅行最少花费是多少 ，i是index
 	public static int f1(int[] days, int[] costs, int i) {
-
+       //base case
+		//当i来到越界位置时，说明后序已经没有新的旅行了
 		if (i == days.length) {
 			// 后续已经无旅行了，即不再有花费，返回0
 			return 0;
 		}
 		// i下标 : 第days[i]天，有一场旅行
+		//j是选定k号方案后，后序从j位置继续
 		// ans：从i开始，最少花费是多少
 		int ans = Integer.MAX_VALUE;
 		for (int k = 0, j = i; k < 3; k++) {
 			// k是方案编号 : 0 1 2
+			//j一开始都在i位置，当duration的范围能够覆盖到j时，j就要一直++，直到不能覆盖到位置，就是下一个起点
+			//且因为k是按1，7，30递增的，所以j也一直不需要回退
 			while (j < days.length && days[i] + durations[k] > days[j]) {
-				// 因为方案2持续的天数最多，30天
+				// 因为方案2持续的天数最多，30天，所以j++的次数不可能超过30
 				// 所以while循环最多执行30次
 				// 枚举行为可以认为是O(1)
 				j++;
@@ -48,9 +53,11 @@ public class Code02_L983_MinimumCostForTickets {
 		}
 		return ans;
 	}
-
-	// 暴力尝试改记忆化搜索
+	/*
+	=========================记忆化搜索==========================
+	 */
 	// 从顶到底的动态规划
+	//整体O n
 	public static int mincostTickets2(int[] days, int[] costs) {
 		int[] dp = new int[days.length];
 		for (int i = 0; i < days.length; i++) {
@@ -77,8 +84,14 @@ public class Code02_L983_MinimumCostForTickets {
 		return ans;
 	}
 
-	// 严格位置依赖的动态规划
+	/*
+	=======================严格位置依赖的动态规划=============
+	 */
 	// 从底到顶的动态规划
+	/*
+	分析依赖关系，即可得出想要知道dp数组前面的值，需要知道后面，前面是复杂的值，后面是简单的值
+	时间也是O n
+	 */
 	public static int MAXN = 366;
 
 	public static int[] dp = new int[MAXN];
